@@ -7,13 +7,20 @@ import VerticalCarousel from './VerticalCarousel'
 import folder_3 from '../assets/folder_3.png'
 import SearchBar from './SearchBar'
 
+import { useSelector, useDispatch } from 'react-redux'
+import {change} from '../Reducers/chatExpand'
+
 
 
 const Sidebar = () => {
+
+  // Estado de si está expandido o no el botón.
+  const bool_isChatExpanded = useSelector((state) => state.chatExpand.expand);
+
   return (
     <Fragment>
        
-       <div className=' h-screen left-0 top-0 flex flex-col w-1/3 border-r border-gray-300 overflow-hidden'>
+       <div className={` h-screen left-0 top-0 flex flex-col border-r border-gray-300 overflow-hidden ${bool_isChatExpanded ? 'w-0p' : 'w-33p '} `}>
          {/* elemento barra buscadora */}
          <SearchBar />
 

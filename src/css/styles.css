@@ -20,7 +20,24 @@
 
 .w-90p{
     width: 90%;
+    transition: width 0.5s ease-in-out;
 }
+
+.w-66p{
+    width: 66.6666%;
+    transition: width 0.5s ease-in-out;
+}
+
+.w-0p{
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.w-33p{
+    width: 33.333333%;
+    transition: width 0.5s ease-in-out;
+}
+
 
 .w-41p{
     width: 41%;

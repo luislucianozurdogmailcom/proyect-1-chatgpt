@@ -20,7 +20,7 @@ const VerticalCarouselChat = ({ items }) => {
 
   return (
     <Slider {...settings} className='w-full h-2/3 overflow-hidden'>
-    {items.map((item) => (
+          {items.map((item) => (
       <ChatBuble str_message={item.str_message} bool_isUser={item.bool_isUser}></ChatBuble>
     ))}
     </Slider>

@@ -7,7 +7,7 @@ const ChatBuble = (item) => {
     <Fragment>
         
         <div className={`w-full min-h-100 flex flex-col my-auto p-4 justify-center ${item.bool_isUser == true ? 'items-end ' : 'items-start'} `}>
-            <div className={`min-h-50 h-full max-w-66p contenedor-central p-5 ${item.bool_isUser == true ? 'chat-user text-white rounded-full rounded-tr' : 'bg-white negro-palabras rounded-full rounded-tl'}`}>
+            <div className={`min-h-50 h-full max-w-66p contenedor-central p-5 ${item.bool_isUser == true ? 'chat-user text-white rounded-3xl rounded-tr' : 'bg-white negro-palabras rounded-3xl rounded-tl'}`}>
                 {item.str_message}
             </div>
         </div>
