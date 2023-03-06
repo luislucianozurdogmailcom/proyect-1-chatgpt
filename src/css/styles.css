@@ -1,0 +1,74 @@
+.w-10p {
+    width: 10%;
+  }
+
+.contenedor-central{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submenu{
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.h-1-8{
+    height: 12.5%;
+}
+
+.w-90p{
+    width: 90%;
+}
+
+.w-41p{
+    width: 41%;
+}
+
+.h-68{
+    height: 68px;
+}
+
+.gris-buscador{
+    background-color: #EEF0F2;
+}
+
+.gris-palabras{
+    color: #98999A;
+}
+
+.negro-palabras{
+    color: #575757
+}
+
+.folder-size{
+    max-width:100px; 
+}
+
+.min-h-50{
+    min-height: 50px;
+}
+
+.max-h-50{
+    max-height: 50px;
+}
+
+.min-h-100{
+    min-height: 100px;
+}
+
+.min-w-100{
+    min-width: 100px;
+}
+
+.chat-user{
+    background-color: #2A85FF;
+}
+.max-w-66p{
+    max-width: 66%;
+}
+
+.max-h-100{
+    max-height: 100px;
+}
