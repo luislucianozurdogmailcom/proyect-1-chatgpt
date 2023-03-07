@@ -12,7 +12,6 @@ export const chatExpand = createSlice({
             }else{
                 state.expand = true;
             }
-            console.log(state.expand);
         }
     }
 })

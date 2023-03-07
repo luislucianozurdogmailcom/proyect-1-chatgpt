@@ -7,7 +7,7 @@ const Header = () => {
     <Fragment>
         <div className='w-full h-1/6 min-h-100 bg-white flex flex-row border-b border-gray-300 items-center'>
             <div className='w-1/2 h-full flex flex-col'>
-                <span className='text-3xl mt-auto mx-10 font-light'>Conversations</span>
+                <span className='text-3xl mt-auto mx-10 font-light'>Messages</span>
                 <div className='h-1/6'></div>
                 <span className='mb-auto text-xl mb-auto mx-10 font-light gris-palabras'>1.520 messages</span>
             </div>

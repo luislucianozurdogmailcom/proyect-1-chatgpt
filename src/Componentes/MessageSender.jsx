@@ -1,44 +1,72 @@
 import React, { Fragment } from 'react'
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {addText} from '../Reducers/chatText'
 
 const MessageSender = () => {
   
-    const [texto, setTexto] = useState('');
-    const [data, setData]   = useState([]);
+    // Ponemos la lógica del texto
+    const [texto, setTexto] = useState(''); // Variable de estado para el texto en input + su funcion setTexto
+    const textos            = useSelector((state) => state.chatText.textos); // Selector para leer el estado actual de los textos
+    const dispatch          = useDispatch();// funcion para despachar la accion de actualizar el estado de redux
 
-    const handleSubmit = async (event) =>{
-        event.preventDefault();
-        const url_api = 'https://jsonplaceholder.typicode.com/posts';
+    const handleSubmit      = async (event) =>{
+        event.preventDefault(); //evitamos que la página recargue
         
-        // Codigo del comportamiento del botón
-        try {
-
-            // Hacemos la peticion al endpoint
-            const response = await fetch(url_api, {
-                method: 'POST',
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                //body: JSON.stringify({request:texto})
-                body: JSON.stringify({
-                    title: 'mi primera nota',
-                    body:  texto,
-                    userId: 1,
-                })
-            });
+        // Solo enviamos la soli si el texto no está vacio
+        if (texto) {
             
-            // Si responde procedemos
-            if (response.ok){
-                console.log('La solicitud se envió con éxito');
-                const res = await response.json();
-                console.log(res);
+            // url Pregunta de tipo legal
+            // const url_legal_api = 'http://20.205.12.207/question/question_intake';
+            
+            const url_legal_api = 'https://jsonplaceholder.typicode.com/posts';
+            
+            // Intentamos tirar la petición a la API
+            try{
                 
-            } else{
-                console.error('Hubo un error al enviar la solicitud');
-            } 
-        }catch (error){
-            console.error('Hubo un erro al enviar la solicitud y fue: ',error);
+                // Tiramos la peti
+                const response = await fetch(url_legal_api, {
+                    method  : 'POST',
+                    headers : {
+                        'Content-Type' : 'application/json',
+                    },
+                    body    : JSON.stringify({
+                        request : texto,
+                    }),
+                });
+
+                // Logica en función de lo respondido
+                if (response.ok){
+                    
+                    console.log('La soli se envió con éxito');
+                    const res = await response.json();
+                    console.log(res.response);
+
+                    // Se despacha la acción al store, se agrega el texto.
+                    dispatch(addText({str_message: texto, bool_isUser: true})); 
+
+                    // Agregamos la respuesta de la API
+                    dispatch(addText({str_message: res.response, bool_isUser: false}));
+                
+                    // Limpiamos el texto en el input
+                    setTexto(''); 
+
+                    // Imprimimos info
+                    console.log(textos)
+
+                }else{
+
+                    console.error('Hubo un error en la petición');
+                }
+
+            }catch(error){
+
+                console.log('Hubo un error y fue: ',error);
+            }
         }
+        
+        
+        
     };
 
     return (

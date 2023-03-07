@@ -1,15 +1,41 @@
 import React from 'react'
 import style from '../css/styles.css'
 import { Fragment } from 'react'
+import avatar from '../assets/avatar.png'
+import robot from '../assets/images.png'
+
 
 const ChatBuble = (item) => {
   return (
     <Fragment>
         
-        <div className={`w-full min-h-100 flex flex-col my-auto p-4 justify-center ${item.bool_isUser == true ? 'items-end ' : 'items-start'} `}>
-            <div className={`min-h-50 h-full max-w-66p contenedor-central p-5 ${item.bool_isUser == true ? 'chat-user text-white rounded-3xl rounded-tr' : 'bg-white negro-palabras rounded-3xl rounded-tl'}`}>
-                {item.str_message}
+        <div className={`w-full flex flex-col`}>
+
+            <div className={`flex flex-row min-h-100 items-center p-3 h-full w-full text-black ${item.bool_isUser == true ? 'bg-transparent' : 'bg-white'}`}>
+              
+              <div className='w-10p'></div>
+              {item.bool_isUser ? (
+              
+              <div class="w-14 h-14 rounded-xl border overflow-hidden">
+                <img src={avatar} class="w-full h-full object-cover" />
+              </div> 
+              
+              ) : (
+                
+              <div class="w-14 h-14 rounded-xl border overflow-hidden">
+                <img src={robot} class="w-full h-full object-cover" />
+              </div> 
+                  
+              )}
+              
+              <div className='mr-5'></div>
+
+              <div className='max-w-66p'>{item.str_message}</div>
+
+              
+            
             </div>
+
         </div>
     
     </Fragment>

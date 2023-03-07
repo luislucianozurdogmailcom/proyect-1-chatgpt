@@ -86,6 +86,10 @@
     max-width: 66%;
 }
 
+.max-w-80p{
+    max-width: 80%;
+}
+
 .max-h-100{
     max-height: 100px;
 }
