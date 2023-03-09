@@ -3,6 +3,7 @@ import style from '../css/styles.css'
 import { Fragment } from 'react'
 import avatar from '../assets/avatar.png'
 import robot from '../assets/images.png'
+import TypingText from './TypedText'
 
 
 const ChatBuble = (item) => {
@@ -30,8 +31,7 @@ const ChatBuble = (item) => {
               
               <div className='mr-5'></div>
 
-              <div className='max-w-66p'>{item.str_message}</div>
-
+              <TypingText text={item.str_message}></TypingText>
               
             
             </div>
