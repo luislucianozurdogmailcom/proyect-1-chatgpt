@@ -106,3 +106,29 @@
         transform: rotate(360deg);
     }
 }
+
+
+.fondo-login {
+    background-color: #2181FF;
+}
+
+.fondo-boton-google {
+    background-color: #E0EFFE;
+}
+
+.login-image-size {
+    width: 498px;
+    height: 498px;
+}
+
+.font-login{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 26.3324px;
+    line-height: 120%;
+}
+
+.h-1px{
+    height: 1px;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import ChatBuble from './ChatBuble'
 
-const VerticalCarouselChat = ({ items }) => {
+const VerticalCarouselFile = ({ items }) => {
   const settings = {
     dots: false,
     dotsClass:'slick-dots slick-thumb',
@@ -27,4 +27,4 @@ const VerticalCarouselChat = ({ items }) => {
   );
 };
 
-export default VerticalCarouselChat;
+export default VerticalCarouselFile;

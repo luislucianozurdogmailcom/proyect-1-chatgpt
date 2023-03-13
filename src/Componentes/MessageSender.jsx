@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {addText} from '../Reducers/chatText'
 import {change} from '../Reducers/answerResponse'
 import {change_wait} from '../Reducers/waitingResponse'
+import {changeCookie} from '../Reducers/cookie'
 import Cookies from 'universal-cookie'
 
 const MessageSender = () => {
@@ -13,6 +14,7 @@ const MessageSender = () => {
     const textos            = useSelector((state) => state.chatText.textos); // Selector para leer el estado actual de los textos
     const bool_isAnswer     = useSelector((state) => state.answerResponse.bool_isAnswer);
     const bool_isWaiting    = useSelector((state) => state.waitingResponse.bool_isWaiting);
+    const session_cookie    = useSelector((state) => state.cookie.cookie);
     const dispatch          = useDispatch();// funcion para despachar la accion de actualizar el estado de redux
     
 
@@ -22,13 +24,14 @@ const MessageSender = () => {
         // Activamos el spin animation
         dispatch(change_wait());
         
-        // Solo enviamos la soli si el texto no está vacio
+        // Petición versión fetch
         if (texto) {
             
-            let url_legal_api = bool_isAnswer ? 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake' : 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake';
+            let url_legal_api = bool_isAnswer ? 'https://callidus.eastasia.cloudapp.azure.com/question/question_answer' : 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake';
            
             
             // Intentamos tirar la petición a la API
+            
             try{
                 
                 // Tiramos la peti
@@ -36,10 +39,11 @@ const MessageSender = () => {
                 const response = bool_isAnswer ? await fetch(url_legal_api, {
                     method      : 'POST',
                     mode        : 'cors',
-                    //credentials : 'include',
+                    credentials : 'include',
                     headers     : {
                         'Content-Type' : 'application/json',
-                        //'Set-Cookie'   : 'HttpOnly;Secure;SameSite=None',
+                        'Set-Cookie'   : 'session=.eJxtkM1OxDAMhF_F6rlCAm5c-hhcKq1M4ramqR3ys1WFeHfcaEFixSnKZDzzOZ9doBnD5aNSLqzSvXSvCxZwiTfKgOJhP-9FU8k98GTS0QMmzgQsUJbzyAXFkV3MiWKC5yv7igFmKhl8qrLCGx1qcedE64TAG5dWYZrAyiFkyLqRCtmMRcg8dP0d4WXSEHSv0VBHGeXxARqxMRQCTfBeDc6zO83A-Ybo2JPYHrhaKsSA7lSHUZ5sHn9cv9y3ekC40sIutGSNlLA0WQ5QG0lQjmhvE2zoFhZKh0U-_xuJO6Zmvf8BkzA4XTSAU8l1iw09JrbOon8WGLqvb5Axnk8.ZAyeig.PQHu-I7RnM6ca_7LTzZj_zKesAw; SameSite=None; Secure',
+                        'Access-Control-Allow-Origin': '*',
                     },
                     body    : JSON.stringify({
                         request : texto
@@ -47,15 +51,17 @@ const MessageSender = () => {
                 }) : await fetch(url_legal_api, {
                     method      : 'POST',
                     mode        : 'cors',
-                    //credentials : 'include',
+                    credentials : 'include',
                     headers     : {
                         'Content-Type' : 'application/json',
-                        //'Set-Cookie'   : 'HttpOnly;Secure;SameSite=None',
+                        'Set-Cookie'   : 'session=.eJxtkM1OxDAMhF_F6rlCAm5c-hhcKq1M4ramqR3ys1WFeHfcaEFixSnKZDzzOZ9doBnD5aNSLqzSvXSvCxZwiTfKgOJhP-9FU8k98GTS0QMmzgQsUJbzyAXFkV3MiWKC5yv7igFmKhl8qrLCGx1qcedE64TAG5dWYZrAyiFkyLqRCtmMRcg8dP0d4WXSEHSv0VBHGeXxARqxMRQCTfBeDc6zO83A-Ybo2JPYHrhaKsSA7lSHUZ5sHn9cv9y3ekC40sIutGSNlLA0WQ5QG0lQjmhvE2zoFhZKh0U-_xuJO6Zmvf8BkzA4XTSAU8l1iw09JrbOon8WGLqvb5Axnk8.ZAyeig.PQHu-I7RnM6ca_7LTzZj_zKesAw; SameSite=None; Secure',
+                        'Access-Control-Allow-Origin': '*',
                     },
                     body    : JSON.stringify({
                         request : texto
                     }),
                 });
+                
 
                 // Logica en función de lo respondido
                 if (response.ok){
@@ -64,15 +70,17 @@ const MessageSender = () => {
                     const res           = await response.json();
                     
                     // Logica de obtención de las cookies
+
+                    console.log(response.headers.get('set-cookie'))
                     
-                    const storedObject = localStorage.getItem('sessionid');
-                    const sessionID = JSON.parse(storedObject);
-                    console.log(sessionID)
+                    //const storedObject = localStorage.getItem('session');
+                    //const sessionID    = JSON.parse(storedObject);
+                    //console.log(sessionID)
 
                     
-                    //const cookies       = new Cookies();
-                    //const allCookies    = cookies.getAll(); 
-                    //console.log('Cookie', allCookies);
+                    const cookies       = new Cookies();
+                    const allCookies    = cookies.getAll(); 
+                    console.log('Cookie', allCookies);
                     
                     //const setCookieHeader = response.headers.get('Set-Cookie');
                     //const cookies         = setCookieHeader.split(';').map(cookie => cookie.trim());
@@ -119,6 +127,7 @@ const MessageSender = () => {
                 // Limpiamos el texto en el input
                 setTexto(''); 
             }
+            
         }
         
         // Apagamos la animación del spiner

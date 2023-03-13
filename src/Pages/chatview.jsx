@@ -1,8 +1,8 @@
 import React from 'react'
 import { Fragment } from 'react'
-import Navbar from './Componentes/Navbar'
-import Sidebar from './Componentes/Sidebar'
-import Chatbox from './Componentes/Chatbox'
+import Navbar from '../Componentes/Navbar'
+import Sidebar from '../Componentes/Sidebar'
+import Chatbox from '../Componentes/Chatbox'
 
 const chatview = () => {
   return (
