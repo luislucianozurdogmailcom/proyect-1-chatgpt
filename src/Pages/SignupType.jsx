@@ -8,7 +8,7 @@ import { redirect } from "react-router-dom";
 const SignupType = () => {
 
     useEffect(() => {
-        if(localStorage.token != undefined)
+        if(localStorage.token !== undefined)
         {
             return redirect('/')
         }

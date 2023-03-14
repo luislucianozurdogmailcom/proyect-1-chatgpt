@@ -9,13 +9,32 @@ const Http = {
         logout: '/logout',
         document: '/document'
     },
-    get: function(data) {
-        console.log(data,'<----')
+    get: function(url,bool=false,cb) {
+        let headers = new Headers()
+            headers['Content-Type'] = 'application/json';
+
+        if(bool)
+        {
+            headers['api-key'] = localStorage.token;
+        }
+
+        fetch(
+            url,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    
+                },
+                mode: 'no-cors',
+            }
+        ).then(rs => rs.json()).then(rs => {
+            cb(rs)
+        })
     },
     post: function(url,body,bool=false,cb) {
-        let headers = {
-            'Content-Type': 'application/json'
-        }
+        let headers = new Headers()
+            headers['Content-Type'] = 'application/json'
 
         if(bool)
         {
