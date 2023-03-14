@@ -1,6 +1,7 @@
 import React from 'react'
 import { Fragment } from 'react'
 import styles from '../css/styles.css'
+import Dropdown from './Dropdown'
 
 const Header = () => {
   return (
@@ -12,8 +13,8 @@ const Header = () => {
                 <span className='mb-auto text-xl mb-auto mx-10 font-light gris-palabras'>1.520 messages</span>
             </div>
 
-            <div className='w-1/2 h-full flex flex-row justify-end'>
-                <div className='my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
+            <div className='w-1/2 h-full flex flex-row justify-end items-center pr-[3em]'>
+                <div className='hidden my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
                     <div className='w-1/2 h-full m-auto flex flex'>
                         <div className='m-auto'>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +31,9 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+                <Dropdown />
             </div>
+
 
         </div>
     </Fragment>

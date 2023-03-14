@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import style from '../css/styles.css'
 import avatar from '../assets/avatar.png'
+import '../css/main.css'
 import { Modal,show,doIt,close,set } from '../Pages/Modal'
 import Http from '../Services/Services'
+import { Error,Success } from './ErrorsAndSuccess'
 
 const logOut = () => {
   let date = new Date()
@@ -16,10 +18,10 @@ const logOut = () => {
 
 const _close = () => {
   let date = new Date()
-  let url = Http.host// + Http.routes.logout;
-  Http.get(url,true,rs => {
+  let url = Http.host + Http.routes.logout;
+  Http.post(url,{},true,rs => {
     if(!rs.action)
-    { 
+    {
       set(m => {
         m.title.innerText = 'Is not possible close the session right now';
         m.title.classList.add('text-red-500')
@@ -32,7 +34,7 @@ const _close = () => {
         m.title.classList.remove('text-red-500');
         m.title.classList.add('text-green-500','font-bold');
         m.letter.innerText = 'Today: ' + date.toDateString() + ' ' + date.toTimeString();
-      }); 
+      });
 
       localStorage.clear();
 

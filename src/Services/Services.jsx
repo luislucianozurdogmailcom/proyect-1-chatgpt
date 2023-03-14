@@ -11,34 +11,33 @@ const Http = {
     },
     get: function(url,bool=false,cb) {
         let headers = new Headers()
-            headers['Content-Type'] = 'application/json';
+            headers.append('Content-Type','application/json')
 
         if(bool)
         {
-            headers['api-key'] = localStorage.token;
+            headers.append('api-key',localStorage.token)
         }
 
         fetch(
             url,
             {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    
-                },
+                headers: headers,
                 mode: 'no-cors',
             }
-        ).then(rs => rs.json()).then(rs => {
+        ).then(rs => rs.text())
+        .then(rs => (rs ? rs.json() : {}))
+        .then(rs => {
             cb(rs)
         })
     },
     post: function(url,body,bool=false,cb) {
-        let headers = new Headers()
-            headers['Content-Type'] = 'application/json'
+        let headers = {}
+            headers["Content-Type"] = "application/json";
 
         if(bool)
         {
-            headers['api-key'] = localStorage.token;
+            headers['api-key'] = localStorage.token
         }
 
         fetch(
@@ -48,8 +47,10 @@ const Http = {
                 headers: headers,
                 body: JSON.stringify(body)
             }
-        ).then(rs => rs.json()).then(rs => {
-            if(!rs.isLogin)
+        )
+        .then(rs => rs.json())
+        .then(rs => {
+            if(!rs.action)
             {
                 this.showError('up-wrong',true);
             }

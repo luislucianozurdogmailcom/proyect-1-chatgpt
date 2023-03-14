@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Error,Success } from "../Componentes/ErrorsAndSuccess";
 
 
 let modal = HTMLElement;
