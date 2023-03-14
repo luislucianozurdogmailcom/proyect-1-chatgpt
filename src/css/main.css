@@ -1,0 +1,32 @@
+#up-wrong {
+    transition: all .2s ease-in-out;
+    bottom: -10em;
+}
+#up-wrong.active {
+    bottom: 0em;
+}
+#up-success {
+    transition: all .2s ease-in-out;
+    bottom: -10em;
+}
+#up-success.active {
+    bottom: 0em;
+}
+#up-pass {
+    transition: all .2s ease-in-out;
+    bottom: -10em;
+}
+#up-pass.active {
+    bottom: 0em;
+}
+#required {
+    transition: all .2s ease-in-out;
+    bottom: -10em;
+}
+#required.active {
+    bottom: 0em;
+}
+#main-container {
+    overflow-y: scroll;
+    height: 100vh;
+}

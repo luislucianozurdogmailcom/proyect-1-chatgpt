@@ -17,14 +17,14 @@ const ChatBuble = (item) => {
               <div className='w-10p'></div>
               {item.bool_isUser ? (
               
-              <div class="w-14 h-14 rounded-xl border overflow-hidden">
-                <img src={avatar} class="w-full h-full object-cover" />
+              <div className="w-14 h-14 rounded-xl border overflow-hidden">
+                <img src={avatar} className="w-full h-full object-cover" />
               </div> 
               
               ) : (
                 
-              <div class="w-14 h-14 rounded-xl border overflow-hidden">
-                <img src={robot} class="w-full h-full object-cover" />
+              <div className="w-14 h-14 rounded-xl border overflow-hidden">
+                <img src={robot} className="w-full h-full object-cover" />
               </div> 
                   
               )}
