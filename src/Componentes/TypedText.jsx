@@ -11,7 +11,7 @@ const TypingText = ({ text }) => {
       if (i > text.length) {
         clearInterval(timer);
       }
-    }, 30);
+    }, 20);
     return () => clearInterval(timer);
   }, [text]);
 

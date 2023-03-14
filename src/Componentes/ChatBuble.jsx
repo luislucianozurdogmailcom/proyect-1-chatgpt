@@ -31,7 +31,7 @@ const ChatBuble = (item) => {
               
               <div className='mr-5'></div>
 
-              <TypingText text={item.str_message}></TypingText>
+              {item.bool_isUser ? <div className='max-w-66p'>{item.str_message}</div> : <TypingText text={item.str_message}></TypingText> }
               
             
             </div>
