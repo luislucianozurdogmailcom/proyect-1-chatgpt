@@ -6,16 +6,14 @@ export const pageState = createSlice({
         page   : '/',
     },
     reducers     : {
-        addText  : (state, action) => {
-            return {
-                ...state,
-                textos : state.textos.concat(action.payload)
-            }
+        changePage  : (state, action) => {
+            
+            state.page = action.payload;
         }
     } 
 });
 
 // Exportamos las acciones
-export const {addText} = chatText.actions
+export const {changePage} = pageState.actions
 
-export default chatText.reducer
+export default pageState.reducer

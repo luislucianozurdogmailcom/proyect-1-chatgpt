@@ -16,7 +16,7 @@ export const filesSelected = createSlice({
         removeFiles : (state, action) => {
             return {
                 ...state,
-                list_filesSelected : state.list_filesSelected.filter(file => file !== action.payload),
+                list_filesSelected : state.list_filesSelected.filter(file => file.name !== action.payload),
             }
         }
     } 

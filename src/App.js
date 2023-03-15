@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  let home = localStorage.token != undefined ? <Chatview /> : <Login />;
+  let home = localStorage.token != undefined ? <Login /> : <Chatview /> ;
 
   window.addEventListener('storage', () => {
     window.location.href = '/'
@@ -21,6 +21,8 @@ function App() {
 
         {/* Pagina login*/}
         <Route path="/" element={ home }></Route>
+
+        <Route path='/login' element={<Login /> }></Route>
         
         {/* Pagina registro cliente*/}
         <Route path="/type" element={ <SignupType /> }></Route>

@@ -7,6 +7,8 @@ import filesSelected from './Reducers/filesSelected'
 import cookie from './Reducers/cookie'
 import modelSelected from './Reducers/modelSelected'
 import countAnswer from './Reducers/countAnswer'
+import pageState from './Reducers/pageState'
+import filesModified from './Reducers/filesModified'
 
 export default configureStore({
     reducer: {
@@ -18,5 +20,7 @@ export default configureStore({
         filesSelected   : filesSelected,
         modelSelected   : modelSelected,
         countAnswer     : countAnswer,
+        pageState       : pageState,
+        filesModified   : filesModified,
     },
 })

@@ -7,6 +7,7 @@ import FileList from './FileList';
 const FilesCharge = () => {
 
     const bool_isChatExpanded = useSelector((state) => state.chatExpand.expand);
+    //const list_filesSelected  = useSelector((state) => state.filesSelected.list_filesSelected)
     const dispatch            = useDispatch();
 
 
