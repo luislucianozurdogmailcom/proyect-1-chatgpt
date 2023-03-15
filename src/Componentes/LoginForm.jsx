@@ -143,7 +143,7 @@ const LoginForm = () => {
                 </div>
             </div>
 
-            <button id='btn-send' type='submit' onClick={(e) => sendData(e)} className='w-full rounded-lg h-12 fondo-login text-white font-bold text-lg'>
+            <button id='btn-send' type='submit' onClick={(e) => sendData(e)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
                 Continue
             </button>
 
