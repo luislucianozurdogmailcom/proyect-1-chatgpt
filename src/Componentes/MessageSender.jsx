@@ -21,7 +21,7 @@ const MessageSender = () => {
 
 
     // Elección del modelo
-    const str_model                    = useSelector((state) => state.modelSelected.str_model);
+    const str_model                      = useSelector((state) => state.modelSelected.str_model);
     
     const dispatch          = useDispatch();// funcion para despachar la accion de actualizar el estado de redux
     
@@ -36,7 +36,7 @@ const MessageSender = () => {
         dispatch(addText({str_message: texto, bool_isUser: true})); 
         
         // Petición para legal question
-        if (texto && str_model == 'legal_question') {
+        if (texto && str_model == 'shortLegal') {
             
             let url_legal_api = int_countAnswer == 1 ? 'https://callidus.eastasia.cloudapp.azure.com/question/question_answer' : 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake';
            
@@ -147,7 +147,7 @@ const MessageSender = () => {
         }
 
         // Petición para Fact Pattern
-        if (texto && str_model == 'fact_pattern'){
+        if (texto && str_model == 'legalResearchModule'){
 
             let url_1 = 'https://callidus.eastasia.cloudapp.azure.com/fact_pattern';
             let url_2 = 'https://callidus.eastasia.cloudapp.azure.com/fact_pattern_2';
@@ -264,7 +264,7 @@ const MessageSender = () => {
         }
 
         // Petición para draft
-        if (texto && str_model == 'draft'){
+        if (texto && str_model == 'memoWriting'){
 
             let url_1 = 'https://callidus.eastasia.cloudapp.azure.com/legal_research/draft_1';
             let url_2 = 'https://callidus.eastasia.cloudapp.azure.com/legal_research/draft_2';

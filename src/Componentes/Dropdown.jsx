@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import '../css/main.css';
+import { useSelector, useDispatch } from 'react-redux'
+import {changeModel} from '../Reducers/modelSelected'
+import {changeCount} from '../Reducers/countAnswer'
 
 const welcomeMessages = {
     shortLegal: "Welcome to the Short Legal Question module. Here, you can ask me a legal hypothetical. I will follow-up with a few clarifying questions, then provide an answer with citations and some background information. I'm not perfect - so check my citations. Example of a typical question you could ask: 'In the case that a large business employs a full-time employee and asks her to perform dangerous work that results in substantial injury to the employee, what claims can the employee make against the company, if any?'.",
@@ -21,8 +24,8 @@ const openDrop = () => {
 }
 
 const setBtnText = (elm) => {
-    let name = elm.getAttribute('name')
-    let str = elm.innerText
+    let name        = elm.getAttribute('name')
+    let str         = elm.innerText
     const dropdownDefaultButton = document.getElementById('dropdownDefaultButton');
           dropdownDefaultButton.innerHTML = '<span class="mr-[1em]">'+str+'</span> <i class="fa fa-angle-down m-0"><i>';
 
@@ -43,6 +46,20 @@ const Dropdown = () => {
         setWelcome('shortLegal');
     },[])
 
+    const dispatch  = useDispatch();
+
+    const handleClickModel = (item) =>{
+        
+        // Cambiamos el modelo en el reducer
+        dispatch(changeModel(item.getAttribute('name')));
+
+        // Seteamos el numero de respuesta en cero
+        dispatch(changeCount(0));
+
+        // Ejecutamos la función setBtnText
+        setBtnText(item);
+    }
+
     return (
         <div>
             <button id="dropdownDefaultButton" onBlur={() => openDrop()} onClick={() => openDrop()} data-dropdown-toggle="dropdown" className="flex space-between items-center border border-gray-300 text-gray-500 rounded-full px-[1em] py-[.6em] shadow-lg" type="button">
@@ -51,13 +68,13 @@ const Dropdown = () => {
             </button>
             <div id="dropdown" className="w-[14em] z-10 absolute top-[5.8em] right-[2.5em] bg-white border border-gray-200 divide-y divide-gray-100 rounded-lg shadow w-44">
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownDefaultButton">
-                    <li name="shortLegal" onClick={(e) => setBtnText(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
+                    <li name="shortLegal" onClick={(e) => handleClickModel(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
                         <i className='fa fa-angle-right mr-2'></i> Short Legal
                     </li>
-                    <li name="legalResearchModule" onClick={(e) => setBtnText(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
+                    <li name="legalResearchModule" onClick={(e) => handleClickModel(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
                         <i className='fa fa-angle-right mr-2'></i> Legal Research Module
                     </li>
-                    <li name="memoWriting" onClick={(e) => setBtnText(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
+                    <li name="memoWriting" onClick={(e) => handleClickModel(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
                         <i className='fa fa-angle-right mr-2'></i> Memo Writing
                     </li>
                 </ul>
