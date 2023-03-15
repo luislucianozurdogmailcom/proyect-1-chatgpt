@@ -65,7 +65,7 @@ const Http = {
 
                 this.showSuccess('up-success',true);
     
-                setTimeout(() => window.location.href = '/chat', 2000);
+                setTimeout(() => window.location.href = '/', 2000);
             }
 
             cb(rs);
