@@ -3,6 +3,8 @@ import { Fragment } from 'react'
 import Navbar from '../Componentes/Navbar'
 import Sidebar from '../Componentes/Sidebar'
 import FilesCharge from '../Componentes/FilesCharge'
+import { Modal } from '../Pages/Modal'
+import { Error,Success } from '../Componentes/ErrorsAndSuccess'
 
 const fileview = () => {
   return (
@@ -14,6 +16,11 @@ const fileview = () => {
       <Sidebar></Sidebar>
 
       <FilesCharge />
+
+      {/** MODAL */}
+      <Modal />
+      <Error>Is not possible close the session right now</Error>
+      <Success>The session is closed!</Success>
     </div>
    
    </Fragment>
