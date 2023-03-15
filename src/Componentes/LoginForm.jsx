@@ -67,9 +67,9 @@ const LoginForm = () => {
         event.preventDefault(); 
 
         // URLs
-        const url_api_login    = 'http://localhost:8000/login';
-        const url_api_document = 'http://localhost:8000/document';
-        const url_api_home     = 'http://localhost:8000/';
+        const url_api_login    = 'https://calliduschat.herokuapp.com/login';
+        const url_api_document = 'https://calliduschat.herokuapp.com/document';
+        const url_api_home     = 'https://calliduschat.herokuapp.com/';
 
         // Intentamos enviar la solicitud
         try{
