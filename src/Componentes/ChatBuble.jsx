@@ -3,6 +3,7 @@ import style from '../css/styles.css'
 import { Fragment } from 'react'
 import avatar from '../assets/avatar.png'
 import robot from '../assets/images.png'
+import callidus from '../assets/callidus 1.png'
 import TypingText from './TypedText'
 
 
@@ -23,8 +24,8 @@ const ChatBuble = (item) => {
               
               ) : (
                 
-              <div className="w-14 h-14 rounded-xl border overflow-hidden">
-                <img src={robot} className="w-full h-full object-cover" />
+              <div className="w-14 h-14 rounded-xl border overflow-hidden bg-blue-500 p-[.5em]">
+                <img src={callidus} className="w-full h-full object-cover" />
               </div> 
                   
               )}

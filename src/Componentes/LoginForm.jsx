@@ -20,7 +20,7 @@ const sendData = (e) => {
 
     let url = Http.host + Http.routes.login;
     Http.post(url,data,false,d => {
-        if(!d.isLogin)
+        if(!d.action)
         {
             user.classList.remove('border-gray-500');
             pass.classList.remove('border-gray-500');

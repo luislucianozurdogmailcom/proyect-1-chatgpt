@@ -9,17 +9,35 @@ const Http = {
         logout: '/logout',
         document: '/document'
     },
-    get: function(data) {
-        console.log(data,'<----')
-    },
-    post: function(url,body,bool=false,cb) {
-        let headers = {
-            'Content-Type': 'application/json'
-        }
+    get: function(url,bool=false,cb) {
+        let headers = new Headers()
+            headers.append('Content-Type','application/json')
 
         if(bool)
         {
-            headers['api-key'] = localStorage.token;
+            headers.append('api-key',localStorage.token)
+        }
+
+        fetch(
+            url,
+            {
+                method: 'GET',
+                headers: headers,
+                mode: 'no-cors',
+            }
+        ).then(rs => rs.text())
+        .then(rs => (rs ? rs.json() : {}))
+        .then(rs => {
+            cb(rs)
+        })
+    },
+    post: function(url,body,bool=false,cb) {
+        let headers = {}
+            headers["Content-Type"] = "application/json";
+
+        if(bool)
+        {
+            headers['api-key'] = localStorage.token
         }
 
         fetch(
@@ -29,8 +47,10 @@ const Http = {
                 headers: headers,
                 body: JSON.stringify(body)
             }
-        ).then(rs => rs.json()).then(rs => {
-            if(!rs.isLogin)
+        )
+        .then(rs => rs.json())
+        .then(rs => {
+            if(!rs.action)
             {
                 this.showError('up-wrong',true);
             }

@@ -5,6 +5,7 @@ import {changeModel} from '../Reducers/modelSelected'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeCount } from '../Reducers/countAnswer'
 import { useState } from 'react'
+import Dropdown from './Dropdown'
 
 const Header = () => {
     
@@ -31,16 +32,8 @@ const Header = () => {
                 <span className='mb-auto text-xl mb-auto mx-10 font-light gris-palabras'>1.520 messages</span>
             </div>
 
-            <div className='w-1/2 h-full flex flex-row justify-end'>
-                
-                {/* Selección del modelo */}
-                <div className={`${bool_viewList ? 'opacity-100' : 'pointer-events-none opacity-0'} fixed top-28 text-center transition-opacity duration-500 mx-2`}>
-                    <button value="legal_question" onClick={handleClick} className='mx-2 border-2 rounded-lg p-2 bg-white' >Legal Question</button>
-                    <button value="fact_pattern" onClick={handleClick} className='mx-2 border-2 rounded-lg p-2 bg-white'>Fact Pattern</button>
-                    <button value="draft" onClick={handleClick} className='mx-2 border-2 rounded-lg p-2 bg-white'>Draft</button>
-                </div>
-                
-                <div className='my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
+            <div className='w-1/2 h-full flex flex-row justify-end items-center pr-[3em]'>
+                <div className='hidden my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
                     <div className='w-1/2 h-full m-auto flex flex'>
                         <div className='m-auto'>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +52,9 @@ const Header = () => {
 
                     
                 </div>
+                <Dropdown />
             </div>
+
 
         </div>
     </Fragment>
