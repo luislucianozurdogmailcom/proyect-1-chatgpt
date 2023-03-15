@@ -1,7 +1,7 @@
 
 
 const Http = {
-    host: 'https://calliduschat.herokuapp.com',
+    host: 'https://calliduschat.herokuapp.com', 
     routes: {
         login: '/login',
         signup: '/signup',
