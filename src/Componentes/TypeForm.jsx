@@ -7,18 +7,11 @@ const goTo = async () => {
 
     if(seletType.value != 0)
     {
-        window.location.href = '/' + seletType.value;
+       window.location.href = './' + seletType.value;
     }
 }
 
 const TypeForm = () => {
-
-    useEffect(() => {
-        if(localStorage.token != undefined)
-        {
-            return redirect('/')
-        }
-    }, [])
 
     return (
         <div className='flex justify-center items-center w-[50%] flex-col'>      
