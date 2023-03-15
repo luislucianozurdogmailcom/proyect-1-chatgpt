@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { redirect } from 'react-router-dom'
+import { redirect, useNavigate, Link } from 'react-router-dom'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import Http from '../Services/Services';
 import { Error,Success } from './ErrorsAndSuccess';
@@ -70,6 +70,7 @@ const clearFields = () => {
 
 const TypeForm = () => {
 
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const [user,setUser] = useState(_user);
@@ -77,13 +78,6 @@ const TypeForm = () => {
     const [confirm,setConfirm] = useState(_confirm);
     const [email,setEmail] = useState(_email);
     const [check,setCheck] = useState(_check);
-
-    useEffect(() => {
-        if(localStorage.token != undefined)
-        {
-            return redirect('/')
-        }
-    }, [])
 
     const handleButtonPass = (event) => {
         
@@ -168,9 +162,9 @@ const TypeForm = () => {
                 </button>
             </div>
             <br />
-            <a href="/type" className="w-[60%] rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
+            <Link to="/type" className="w-[60%] rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
                 Cancel
-            </a>
+            </Link>
 
             <Error>Wrong save the customer</Error>
             <Success>Save customer done!</Success>

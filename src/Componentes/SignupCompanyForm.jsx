@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { redirect } from 'react-router-dom'
+import { redirect, Link } from 'react-router-dom'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import Http from '../Services/Services';
 import { Error,Success } from './ErrorsAndSuccess';
@@ -205,9 +205,9 @@ const SignupCompanyForm = () => {
                 </button>
             </div>
             <br />
-            <a href="/type" className="w-[60%] rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
+            <Link to="/type" className="w-[60%] rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
                 Cancel
-            </a>
+            </Link>
 
             <Error>Wrong save the customer</Error>
             <Success>Save customer done!</Success>

@@ -1,17 +1,21 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { redirect } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 
-const goTo = async () => {
+
+const GoTo = (navigate) => {
     let seletType = document.getElementById('select-type');
 
     if(seletType.value != 0)
     {
-       window.location.href = './' + seletType.value;
+       //window.location.href = './' + seletType.value;
+       let url = '/' + seletType.value
+       navigate(url)
     }
 }
 
 const TypeForm = () => {
+    const navigate = useNavigate();
 
     return (
         <div className='flex justify-center items-center w-[50%] flex-col'>      
@@ -27,7 +31,7 @@ const TypeForm = () => {
                 </select> 
             </div>
             <br />
-            <button onClick={(e) => goTo()} className="w-[60%] rounded-lg h-12 fondo-login text-white font-bold text-lg">
+            <button onClick={(e) => GoTo(navigate)} className="w-[60%] rounded-lg h-12 fondo-login text-white font-bold text-lg">
                 Continue
             </button>
             <br />
