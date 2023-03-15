@@ -56,16 +56,7 @@ const Http = {
             }
             else
             {
-                Object.assign(localStorage,{
-                    token: rs.token,
-                    daysCaduced: rs.daysCaduced,
-                    isCaduced: rs.isCaduced,
-                    isLogin: rs.isLogin
-                })
-
                 this.showSuccess('up-success',true);
-    
-                setTimeout(() => window.location.href = '/', 2000);
             }
 
             cb(rs);

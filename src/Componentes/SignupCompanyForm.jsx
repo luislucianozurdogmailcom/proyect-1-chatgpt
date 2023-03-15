@@ -200,7 +200,7 @@ const SignupCompanyForm = () => {
                     business_name: businessName,
                     business_code: businessCode,
                     category: 3
-                })} className='w-full rounded-lg h-12 fondo-login text-white font-bold text-lg'>
+                })} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg'>
                     Continue
                 </button>
             </div>

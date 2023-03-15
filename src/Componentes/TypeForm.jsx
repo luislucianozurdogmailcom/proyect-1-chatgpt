@@ -31,7 +31,7 @@ const TypeForm = () => {
                 </select> 
             </div>
             <br />
-            <button onClick={(e) => GoTo(navigate)} className="w-[60%] rounded-lg h-12 fondo-login text-white font-bold text-lg">
+            <button onClick={(e) => GoTo(navigate)} className="w-[60%] rounded-lg h-12 bg-blue-500 text-white font-bold text-lg">
                 Continue
             </button>
             <br />

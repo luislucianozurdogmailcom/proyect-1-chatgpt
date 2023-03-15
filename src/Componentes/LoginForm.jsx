@@ -7,11 +7,12 @@ import { redirect } from 'react-router-dom';
 import Http from '../Services/Services'
 import { Error,Success } from './ErrorsAndSuccess';
 import '../css/main.css'
+import { useNavigate } from 'react-router-dom';
 
 
-const sendData = (e) => {
+const SendData = (e) => {
     e.preventDefault()
-
+    
     let user = document.getElementById('username');
     let pass = document.getElementById('password');
     let btnSend = document.getElementById('btn-send');
@@ -44,6 +45,15 @@ const sendData = (e) => {
             pass.setAttribute('disabled','disabled');
             btnSend.setAttribute('disabled','disabled');
             btnGoogle.setAttribute('disabled','disabled');
+
+            Object.assign(localStorage,{
+                token: d.token,
+                daysCaduced: d.daysCaduced,
+                isCaduced: d.isCaduced,
+                isLogin: d.isLogin
+            })
+
+            setTimeout(() => window.location.reload(),2000);
         }
     });
 }
@@ -143,7 +153,7 @@ const LoginForm = () => {
                 </div>
             </div>
 
-            <button id='btn-send' type='submit' onClick={(e) => sendData(e)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
+            <button id='btn-send' type='submit' onClick={(e) => SendData(e)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
                 Continue
             </button>
 
