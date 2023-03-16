@@ -5,6 +5,7 @@ import SignupCustomer from './Pages/SignupCustomer';
 import SignupCompany from './Pages/SignupCompany';
 import SignupType from './Pages/SignupType';
 import Fileview from './Pages/fileview';
+import Stripeview from "./Pages/Stripeview";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
 
         {/* Pagina archivos */}
         <Route path='files' element={<Fileview />} />
+
+        {/* Pagina de pagos Stripe */}
+        <Route path='/stripe' element={<Stripeview />} />
 
       </Routes>
     </Router>
