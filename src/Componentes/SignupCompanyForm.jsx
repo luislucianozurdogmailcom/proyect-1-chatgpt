@@ -1,10 +1,11 @@
 import { useState,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { redirect, Link } from 'react-router-dom'
+import { redirect, Link, useNavigation, useNavigate } from 'react-router-dom'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import Http from '../Services/Services';
 import { Error,Success } from './ErrorsAndSuccess';
 import '../css/main.css'
+import { Modal,set,show,close } from '../Pages/Modal';
 
 let _user = null;
 let _pass = null;
@@ -13,6 +14,7 @@ let _email = null;
 let _check = false;
 let _businessName = null;
 let _businessCode = null;
+let navigation = null;
 
 const sendData = (data) => {
     let keys = Object.keys(data);
@@ -62,6 +64,7 @@ const sendData = (data) => {
             {
                 Http.showSuccess('up-success',true);
                 clearFields();
+                showCOnfirm();
             }
         });
     }
@@ -82,8 +85,25 @@ const clearFields = () => {
         })
 }
 
+const showCOnfirm = () => {
+    let date = new Date()
+    let btnClose = document.getElementById('btn-modal-close');
+    let btnSend = document.getElementById('btn-modal-send');
+    set(m => {
+      m.header.innerText = 'Confirm';
+      m.title.innerText = 'Do you want to create a new Company?';
+    });
+    btnClose.innerText = 'go to login';
+    btnSend.innerText = 'yes, another company';
+    show();
+
+    btnClose.onclick = () => navigation('/');
+    btnSend.onclick = () => close();
+}
+
 const SignupCompanyForm = () => {
 
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const [user,setUser] = useState(_user);
@@ -95,10 +115,7 @@ const SignupCompanyForm = () => {
     const [businessCode,setBusinessCode] = useState(_businessCode);
 
     useEffect(() => {
-        if(localStorage.token != undefined)
-        {
-            return redirect('/')
-        }
+        navigation = navigate;
     }, [])
 
     const handleButtonPass = (event) => {
@@ -217,6 +234,8 @@ const SignupCompanyForm = () => {
             <div id='required' className='fixed text-white left-0 w-full p-[1.6%] bg-red-500 shadow-lg text-center'>
                 Complete fileds required
             </div>
+
+            <Modal />
         </div>
     )
 }   
