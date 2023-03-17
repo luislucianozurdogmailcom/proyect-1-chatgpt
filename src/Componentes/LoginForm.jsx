@@ -3,14 +3,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { useState,useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { redirect } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import Http from '../Services/Services'
 import { Error,Success } from './ErrorsAndSuccess';
 import '../css/main.css'
-import { useNavigate } from 'react-router-dom';
 
+const validateEmail = (val) => {
+    let regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(regExp.test(val))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
-const SendData = (e) => {
+const SendData = (e,navigate) => {
     e.preventDefault()
     
     let user = document.getElementById('username');
@@ -53,7 +63,16 @@ const SendData = (e) => {
                 isLogin: d.isLogin
             })
 
-            setTimeout(() => window.location.reload(),2000);
+            setTimeout(() => {
+                if(d.isCaduced > 0)
+                {
+                    navigate('/')
+                }
+                else
+                {
+                    navigate('/stripe')
+                }
+            },2000);
         }
     });
 }
@@ -64,6 +83,7 @@ const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser]                 = useState('');
     const [pass, setPass]                 = useState('');
+    const navigate = useNavigate()
 
 
     const handleButton = (event) => {
@@ -153,7 +173,7 @@ const LoginForm = () => {
                 </div>
             </div>
 
-            <button id='btn-send' type='submit' onClick={(e) => SendData(e)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
+            <button id='btn-send' type='submit' onClick={(e) => SendData(e,navigate)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
                 Continue
             </button>
 

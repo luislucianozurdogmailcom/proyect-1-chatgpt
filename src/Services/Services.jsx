@@ -1,32 +1,33 @@
 
 
 const Http = {
-    host: 'https://calliduschat.herokuapp.com', 
+    //host: 'https://calliduschat.herokuapp.com', 
+    host: 'http://localhost:8000',
     routes: {
         login: '/login',
         signup: '/signup',
         business: '/signup-company',
         logout: '/logout',
-        document: '/document'
+        document: '/document',
+        caduced: '/get-days-remaining'
     },
     get: function(url,bool=false,cb) {
-        let headers = new Headers()
-            headers.append('Content-Type','application/json')
+        let headers = {}
+            headers["Content-Type"] = "application/json";
 
         if(bool)
         {
-            headers.append('api-key',localStorage.token)
+            headers['api-key'] = localStorage.token;
         }
 
         fetch(
             url,
             {
                 method: 'GET',
-                headers: headers,
-                mode: 'no-cors',
+                headers: headers
             }
-        ).then(rs => rs.text())
-        .then(rs => (rs ? rs.json() : {}))
+        )
+        .then(rs => rs.json())
         .then(rs => {
             cb(rs)
         })
