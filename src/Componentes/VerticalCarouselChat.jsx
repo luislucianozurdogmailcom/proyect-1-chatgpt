@@ -7,15 +7,19 @@ const VerticalCarouselChat = ({ items }) => {
     dots: false,
     dotsClass:'slick-dots slick-thumb',
     wheel: true,
-    wheelScroll:2,
+    wheelScroll:1,
     infinite: false,
     vertical: true,
     verticalSwiping: true,
     swipeToSlide: true,
+    autoplay: false,
+    pauseOnHover: false,
     arrows: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    pauseOnDotsHover: false,
+    draggable: true,
   };
 
   return (

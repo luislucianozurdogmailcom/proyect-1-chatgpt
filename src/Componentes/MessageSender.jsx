@@ -32,6 +32,8 @@ const MessageSender = () => {
         // Activamos el spin animation
         dispatch(change_wait());
 
+        console.log(textos)
+
         // Texto del usuario
         dispatch(addText({str_message: texto, bool_isUser: true})); 
         
