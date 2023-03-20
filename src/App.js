@@ -6,6 +6,7 @@ import SignupCompany from './Pages/SignupCompany';
 import SignupType from './Pages/SignupType';
 import Fileview from './Pages/fileview';
 import Stripeview from "./Pages/Stripeview";
+import Profileview from "./Pages/profile";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
         
         {/* Pagina Chat */}
         <Route path="/chat" element={<Chatview />} />
+
+        {/* Pagina Profile */}
+        <Route path="/profile" element={<Profileview />} />
 
         {/* Pagina archivos */}
         <Route path='files' element={<Fileview />} />

@@ -63,6 +63,12 @@ const Navbar = () => {
         </div>
       </div>
 
+      <Link to='/profile' className='h-1/5 flex contenedor-central'>
+        <svg width="22" height="26" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" fill="#BEBEBE"/>
+        </svg>
+      </Link>
+
       <Link to={'/'} className='h-1/5 flex contenedor-central'>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.33333 22.1714H5.88889C4.59227 22.1714 3.34877 21.6564 2.43192 20.7395C1.51508 19.8227 1 18.5792 1 17.2825V9.59232C0.999982 8.7517 1.21672 7.92527 1.62928 7.19285C2.04185 6.46043 2.6363 5.84676 3.35522 5.4111L9.46633 1.70777C10.2304 1.24479 11.1066 1 12 1C12.8934 1 13.7696 1.24479 14.5337 1.70777L20.6448 5.4111C21.3635 5.84665 21.9579 6.46012 22.3704 7.19232C22.783 7.92451 22.9998 8.75068 23 9.5911V17.2825C23 18.5792 22.4849 19.8227 21.5681 20.7395C20.6512 21.6564 19.4077 22.1714 18.1111 22.1714H15.6667M8.33333 22.1714V17.2825C8.33333 16.3101 8.71964 15.3775 9.40727 14.6898C10.0949 14.0022 11.0275 13.6159 12 13.6159C12.9725 13.6159 13.9051 14.0022 14.5927 14.6898C15.2804 15.3775 15.6667 16.3101 15.6667 17.2825V22.1714M8.33333 22.1714H15.6667" stroke="#BEBEBE" strokeWidth="1.84638" strokeLinecap="round" strokeLinejoin="round"/>  
@@ -85,10 +91,12 @@ const Navbar = () => {
         <i className='fa fa-credit-card text-gray-400 text-xl'></i>
       </Link>
 
+      
+
     </div>
 
 
-    <div className='h-1/2 flex justify-center items-end'>
+    <div className='flex justify-center items-end p-0 pb-8'>
 
       <div className='h-1/4 contenedor-central'>
         <button onClick={() => logOut()}>
