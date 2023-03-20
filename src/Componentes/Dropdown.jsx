@@ -48,7 +48,7 @@ const Dropdown = () => {
 
     const dispatch  = useDispatch();
 
-    const handleClickModel = (item) =>{
+    const handleClickModel = (item) => {
         
         // Cambiamos el modelo en el reducer
         dispatch(changeModel(item.getAttribute('name')));

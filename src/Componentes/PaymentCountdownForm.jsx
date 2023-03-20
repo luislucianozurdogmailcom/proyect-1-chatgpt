@@ -1,4 +1,9 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import '../css/main.css'
+import Http from "../Services/Services";
+
+
 
 const PaymentCountDownForm = () => {
 
@@ -14,7 +19,7 @@ const PaymentCountDownForm = () => {
                     <h1 className="text-gray-800 font-bold text-lg">
                         Subscription
                     </h1>
-                    <h1 className="text-[4em] font-bold text-gray-800 m-0">
+                    <h1 id="count-down" className="text-[4em] font-bold text-gray-800 m-0">
                         { localStorage.daysCaduced }
                     </h1>
                     <p className="text-gray-600">

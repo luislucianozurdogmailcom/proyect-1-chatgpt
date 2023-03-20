@@ -60,19 +60,12 @@ const SendData = (e,navigate) => {
                 token: d.token,
                 daysCaduced: d.daysCaduced,
                 isCaduced: d.isCaduced,
-                isLogin: d.isLogin
+                isLogin: d.action
             })
 
             setTimeout(() => {
-                if(d.isCaduced > 0)
-                {
-                    navigate('/')
-                }
-                else
-                {
-                    navigate('/stripe')
-                }
-            },2000);
+                window.location.href = '/stripe';
+            },1000);
         }
     });
 }

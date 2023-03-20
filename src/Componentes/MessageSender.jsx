@@ -7,6 +7,7 @@ import {change_wait} from '../Reducers/waitingResponse'
 import {changeCookie} from '../Reducers/cookie'
 import Cookies from 'universal-cookie'
 import {changeCount} from '../Reducers/countAnswer'
+import { Error,Success,TextCopied } from './ErrorsAndSuccess';
 
 
 const MessageSender = () => {
@@ -20,25 +21,25 @@ const MessageSender = () => {
     const session_cookie                 = useSelector((state) => state.cookie.cookie);
 
 
+
+
     // Elección del modelo
     const str_model                      = useSelector((state) => state.modelSelected.str_model);
     
     const dispatch          = useDispatch();// funcion para despachar la accion de actualizar el estado de redux
     
 
-    const handleSubmit      = async (event) =>{
+    const handleSubmit      = async (event) => {
         event.preventDefault(); //evitamos que la página recargue
 
         // Activamos el spin animation
         dispatch(change_wait());
 
-        console.log(textos)
-
         // Texto del usuario
         dispatch(addText({str_message: texto, bool_isUser: true})); 
         
         // Petición para legal question
-        if (texto && str_model == 'shortLegal') {
+        if (texto && (str_model == 'shortLegal' || str_model == 'legal_question')) {
             
             let url_legal_api = int_countAnswer == 1 ? 'https://callidus.eastasia.cloudapp.azure.com/question/question_answer' : 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake';
            
@@ -468,6 +469,7 @@ const MessageSender = () => {
 
             </div>
         </form>
+        <TextCopied>Text copied!</TextCopied>
     </Fragment>
 
   )

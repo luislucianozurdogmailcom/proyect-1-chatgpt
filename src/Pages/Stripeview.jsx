@@ -5,23 +5,40 @@ import StripeForm from '../Componentes/StripeForm'
 import PaymentCountDownForm from '../Componentes/PaymentCountdownForm'
 import { Modal } from './Modal'
 import { Error,Success } from '../Componentes/ErrorsAndSuccess'
-import Http from "../Services/Services";
+import Http from "../Services/Services"
 
-
-const getDaysCaduced = (showC) => {
+const getDaysCaduced = () => {
     let url = Http.host + Http.routes.caduced;
     Http.get(url,true, rs => {
-        Object.assign(localStorage, {
-            daysCaduced: rs.days_caduced
-        })
+        if(rs.action != false)
+        {
+            Object.assign(localStorage, {
+                daysCaduced: rs.days_caduced
+            })
+    
+            window.location.reload()
+        }
+    });
+}
+
+const validatePayments = () => {
+    let url = Http.host + Http.routes.validatePayments;
+    Http.get(url,true, rs => {
+        if(rs.action != false)
+        {
+            getDaysCaduced()
+        }
     });
 }
 
 const Stripeview = () => {
 
     useEffect(() => {
-        getDaysCaduced()
-    })
+        if(localStorage.daysCaduced == 0)
+        {
+            validatePayments()
+        }
+    },[])
 
     return (
         <Fragment>
@@ -31,7 +48,7 @@ const Stripeview = () => {
                     
                     <div className='bg-gray-100 rounded-lg h-[45vh]'></div>
                     
-                    { localStorage.daysCaduced != 0 ? <PaymentCountDownForm /> : <StripeForm /> }
+                    { localStorage.daysCaduced > 0 ? <PaymentCountDownForm /> : <StripeForm /> }
 
                 </div>
             </div>

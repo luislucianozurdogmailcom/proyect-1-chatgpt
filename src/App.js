@@ -10,10 +10,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
-  let home = localStorage.token == undefined ? <Chatview /> : <Login /> ;
+  let home = localStorage.token != undefined ? <Chatview /> : <Login /> ;
 
   window.addEventListener('storage', () => {
-    window.location.href = '/'
+    if(localStorage.token == undefined)
+    {
+      window.location.href = '/'
+    }
   })
 
   return (
