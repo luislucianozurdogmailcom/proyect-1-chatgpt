@@ -5,6 +5,7 @@ const Http = {
     host: 'http://localhost:8000',
     routes: {
         login: '/login',
+        google: '/google-login',
         signup: '/signup',
         business: '/signup-company',
         logout: '/logout',

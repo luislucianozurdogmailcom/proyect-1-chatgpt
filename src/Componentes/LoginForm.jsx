@@ -7,18 +7,9 @@ import { redirect, useNavigate } from 'react-router-dom';
 import Http from '../Services/Services'
 import { Error,Success } from './ErrorsAndSuccess';
 import '../css/main.css'
-
-const validateEmail = (val) => {
-    let regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(regExp.test(val))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+import credentials from '../assets/google_credentials.json'
+import { auth } from '../Services/firebase';
+import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js"
 
 const SendData = (e,navigate) => {
     e.preventDefault()
@@ -70,107 +61,101 @@ const SendData = (e,navigate) => {
     });
 }
 
+const responseGoogle = async (res) => {
+    try
+    {
+        let provider = new GoogleAuthProvider()
+        let data = await signInWithPopup(auth, provider)
+        
+        if(data.user.emailVerified)
+        {
+            let user = document.getElementById('username');
+            let pass = document.getElementById('password');
+            let btnSend = document.getElementById('btn-send');
+            let btnGoogle = document.getElementById('btn-google');
+
+            let url = Http.host + Http.routes.google
+            Http.post(url,data.user,false,d => {
+                if(d.action)
+                {
+                    user.setAttribute('disabled','disabled');
+                    pass.setAttribute('disabled','disabled');
+                    btnSend.setAttribute('disabled','disabled');
+                    btnGoogle.setAttribute('disabled','disabled');
+    
+                    Object.assign(localStorage,{
+                        token: d.token,
+                        daysCaduced: d.daysCaduced,
+                        isCaduced: d.isCaduced,
+                        isLogin: d.action
+                    })
+    
+                    setTimeout(() => {
+                        window.location.href = '/stripe';
+                    },1000);
+                }
+
+            });
+        }
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}
+
 const LoginForm = () => {
   
     // Variables que vamos a utilizar
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser]                 = useState('');
     const [pass, setPass]                 = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     const handleButton = (event) => {
-        
         setShowPassword(!showPassword);
     }
-
-    const handleSubmit = async (event) => {
-
-        //evitamos que la página recargue
-        event.preventDefault(); 
-
-        // URLs
-        const url_api_login    = 'https://calliduschat.herokuapp.com/login';
-        const url_api_document = 'https://calliduschat.herokuapp.com/document';
-        const url_api_home     = 'https://calliduschat.herokuapp.com/';
-
-        // Intentamos enviar la solicitud
-        try{
-            
-            const response = await fetch(url_api_login,{
-                method      : 'POST',
-                mode        : 'cors',
-                credentials : 'include',
-                headers     : {
-                    'Content-Type'               : 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                },
-                body        : JSON.stringify({
-                    username : user,
-                    password : pass,
-                }),
-            });
-
-            const response_json = await response.json();
-
-            if (response.ok){
-
-                // Chequeo de login exitoso
-                if(response_json.msg == 'Login'){
-                    
-                    return <redirect to='/chat'></redirect>;
-
-                }else{
-                    console.log('No tenes cuenta bro');
-
-                }
-            }else{
-                console.log('Hubo un error', response);
-            }
-
-        }catch(e){
-            console.log('Hubo un error y fue:',e);
-        }
-
-    }
-
   
     return (
     <div className='flex flex-col w-1/2 h-full justify-center items-center'>
-        <form onSubmit={handleSubmit} className='w-3/5 h-1/2 flex flex-col items-start justify-around'>
-            <span className='text-3xl font-bold'>Log In</span>
-            
-            <div className='w-full'>
-                <label className="block text-gray-700 text-xl font-extralight mb-2" htmlFor="username">
-                  Username
-                </label>
-                <input onChange={(event) => setUser(event.target.value)} id='username' type='text' placeholder='Enter your username' className='p-2 w-full h-12 border-2 rounded-xl' />
-            </div>
+        
+        <div className='w-full px-[20%]'>
 
+            <span className='text-3xl font-bold'>Log In</span>
+            <br />
+            <br />
+            <div className='w-full mb-[1em]'>
+                <label className="block text-gray-700 text-xl font-extralight mb-2" htmlFor="username">
+                    Username
+                </label>
+                <input autoFocus={"autofocus"} onChange={(event) => setUser(event.target.value)} id='username' type='text' placeholder='Enter your username' className='py-2 px-4 w-full h-12 border-2 rounded-xl outline-0 ring-0 focus:ring-2 focus:ring-blue-300' />
+            </div>
             <div className='w-full'>
                 <label className="block text-gray-700 text-xl font-extralight mb-2" htmlFor="password">
-                  Password
+                    Password
                 </label>
 
                 <div className='w-full flex flex-row items-center relative'>
-                    <input onChange={(event) => setPass(event.target.value)} id='password' type={showPassword ? 'text' : 'password'} placeholder='Enter your password' className='p-2 w-full h-12 border-2 rounded-xl' />
+                    <input onChange={(event) => setPass(event.target.value)} id='password' type={showPassword ? 'text' : 'password'} placeholder='Enter your password' className='py-2 px-4 w-full h-12 border-2 rounded-xl outline-0 ring-0 focus:ring-2 focus:ring-blue-300' />
                     
                     <button
-                      type='button'
-                      className="absolute top-0 right-0 h-full px-3 py-2 text-gray-400"
-                      onClick={() => handleButton(showPassword)}
+                        type='button'
+                        className="absolute top-0 right-0 h-full px-3 py-2 text-gray-400"
+                        onClick={() => handleButton(showPassword)}
                     >
                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                     </button>
                     
                 </div>
             </div>
-
+            <br />
             <button id='btn-send' type='submit' onClick={(e) => SendData(e,navigate)} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg '>
                 Continue
             </button>
-
-            <button id='btn-google' className='w-full flex flex-row justify-center items-center rounded-lg h-12 fondo-boton-google text-blue-500 font-bold text-lg'>
+            <br />
+            <br />
+            <button id="btn-google" onClick={() => responseGoogle()} className='w-full flex flex-row justify-center items-center rounded-lg h-12 fondo-boton-google text-blue-500 font-bold text-lg'>
                 <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_110_61)">
                     <path d="M26.1594 13.804C26.1594 12.907 26.0866 12.0053 25.9315 11.1229H13.4861V16.2038H20.613C20.3172 17.8425 19.367 19.2921 17.9755 20.2133V23.5101H22.2275C24.7243 21.212 26.1594 17.8183 26.1594 13.804Z" fill="#4285F4"/>
@@ -184,12 +169,13 @@ const LoginForm = () => {
                     </clipPath>
                     </defs>
                 </svg>
-                &nbsp; &nbsp; 
+                &nbsp; 
+                &nbsp; 
                 <div>
-                
-                Continue with Google
+                    Continue with Google
                 </div>
             </button>
+            <br />
 
             <div className='hidden text-lg w-full text-gray-400 flex flex-row justify-center'>
                 Already have an account?&nbsp;  
@@ -200,7 +186,8 @@ const LoginForm = () => {
                 do you want to register?&nbsp;  
                 <Link to='/type' className='text-blue-500'><button>Sign Up</button></Link>
             </div>
-        </form>
+        </div>
+
 
         <Error>Wrong username/password</Error>
         <Success>Login success!</Success>
