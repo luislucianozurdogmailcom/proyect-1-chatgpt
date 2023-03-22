@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Slider from "react-slick";
 import ChatBuble from './ChatBuble'
 
 const VerticalCarouselChat = ({ items }) => {
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    slider.slickGoTo(items.length - 1);
+  }, [items]);
+
   const settings = {
     dots: false,
     dotsClass:'slick-dots slick-thumb',
@@ -23,9 +30,9 @@ const VerticalCarouselChat = ({ items }) => {
   };
 
   return (
-    <Slider {...settings} className='w-full h-2/3 overflow-hidden'>
+    <Slider {...settings} ref={sliderRef} className='w-full h-2/3 overflow-hidden'>
           {items.map((item) => (
-      <ChatBuble str_message={item.str_message} bool_isUser={item.bool_isUser}></ChatBuble>
+      <ChatBuble key={item.id} str_message={item.str_message} bool_isUser={item.bool_isUser}></ChatBuble>
     ))}
     </Slider>
   );
