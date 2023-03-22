@@ -448,6 +448,24 @@ const MessageSender = () => {
                 setTexto(''); 
             }
         }
+
+
+        if(texto && str_model == 'factPattern')
+        {
+            console.log(str_model,'<------');
+        }
+
+        if(texto && str_model == 'Proofread')
+        {
+            console.log(str_model,'<------');
+        }
+
+        if(texto && str_model == 'draft')
+        {
+            console.log(str_model,'<------');
+        }
+
+
         
         // Apagamos la animación del spiner
         dispatch(change_wait());
