@@ -1,8 +1,8 @@
 
 
 const Http = {
-    //host: 'https://calliduschat.herokuapp.com', 
-    host: 'http://localhost:8000',
+    host: 'https://calliduschat.herokuapp.com', 
+    //host: 'http://localhost:8000',
     routes: {
         login: '/login',
         google: '/google-login',
