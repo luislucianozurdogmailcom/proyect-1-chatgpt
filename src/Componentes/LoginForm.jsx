@@ -9,7 +9,7 @@ import { Error,Success } from './ErrorsAndSuccess';
 import '../css/main.css'
 import credentials from '../assets/google_credentials.json'
 import { auth } from '../Services/firebase';
-import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 const SendData = (e,navigate) => {
     e.preventDefault()
