@@ -12,7 +12,7 @@ const fileview = () => {
     <div className='flex flex-row w-full h-full'>
 
       <Navbar></Navbar>
-      <div className='h-full w-10p bg-black'></div>
+     {/*  <div className='h-full w-10p bg-black'></div> */}
       <Sidebar></Sidebar>
 
       <FilesCharge />

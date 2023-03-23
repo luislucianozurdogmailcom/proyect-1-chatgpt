@@ -8,6 +8,7 @@ import Fileview from './Pages/fileview';
 import Stripeview from "./Pages/Stripeview";
 import Profileview from "./Pages/profile";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

@@ -61,7 +61,7 @@ const Profileview = () => {
         <Fragment>
             <div className='flex flex-row w-full h-full'>
                 <Navbar></Navbar>
-                <div className='h-full w-10p bg-black'></div>
+                {/* <div className='h-full w-10p bg-black'></div> */}
                 <div className='profile-container container py-12 px-[5em]'>
                     <form className='p-8' onSubmit={handleSubmit}>
                         
