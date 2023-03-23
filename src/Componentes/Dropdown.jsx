@@ -71,8 +71,8 @@ const Dropdown = () => {
                 <span className='mr-[1em]'>Short Legal Hypo</span>
                 <i className='fa fa-angle-down m-0'></i>
             </button>
-            <div id="dropdown" className="w-[14em] z-10 absolute top-[5.8em] right-[2.5em] bg-white border border-gray-200 divide-y divide-gray-100 rounded-lg shadow w-44">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownDefaultButton">
+            <div id="dropdown" className="w-[14em] z-10 absolute top-[4.8em] right-[2.5em] bg-white border border-gray-200 divide-y divide-gray-100 rounded-lg shadow w-44">
+                <ul className="p-0 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownDefaultButton">
                     <li name="shortLegal" onClick={(e) => handleClickModel(e.currentTarget)} className="block px-4 py-2 hover:text-gray-500 hover:bg-gray-200 cursor-pointer">
                         <i className='fa fa-angle-right mr-2'></i> Short Legal Hypo
                     </li>

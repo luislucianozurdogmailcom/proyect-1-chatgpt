@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {change} from '../Reducers/chatExpand'
 import {change_wait} from '../Reducers/waitingResponse'
 import carga from '../assets/loguito-carga-removebg-preview.png'
+import styled from 'styled-components';
 
 
 const Chatbox = () => {
@@ -18,22 +19,29 @@ const Chatbox = () => {
   const dispatch            = useDispatch();
 
   return (
-    <div className={`${bool_isChatExpanded ? 'w-90p' : 'w-66p'} h-screen items-center gris-buscador overflow-hidden relative`}>
-      <Header />
-      <VerticalCarouselChat items={textos}>
-      </VerticalCarouselChat>
+    <div className={`w-100 h-screen items-center gris-buscador overflow-hidden relative d-flex`}>
 
-      {/* LOADER CONTAINER */}
-      <div className={`${bool_isChatExpanded ? 'inset-1/2' : 'left-2/3 top-1/2'} h-20 w-20 fixed`}>
-        <img src={carga} className={`w-full h-full object-cover animacion-giro ${bool_isWaiting ? '' : 'hidden'}`} />
-      </div>
-      
       {/* BUTTON SIDEMENU EXPANDER */}
-      <button className='w-4 h-14 text-center flex flex-col justify-center fixed top-1/2 chat-user text-white rounded-full rounded-tl rounded-bl'  onClick={()=> dispatch(change()) }>
-        <i className={`fa-solid fa-chevron-${bool_isChatExpanded ? 'right' : 'left'}`}></i>
-      </button>
+      <div className='position: relative'>
+        <ToggleButton className='w-4 h-14 btn btn-primary position-absolute top-50 translate-middle-y start-0 chat-user text-white'  onClick={()=> dispatch(change()) }>
+          <i className={`fa-solid fa-chevron-${bool_isChatExpanded ? 'right' : 'left'}`}></i>
+        </ToggleButton> 
+      </div>
 
-      <MessageSender />
+      <div className='w-100 h-100 d-flex justify-content-between align-items-center flex-column'>
+        <Header />
+        <VerticalCarouselChat items={textos}></VerticalCarouselChat>
+        
+        {/* LOADER CONTAINER */}
+        <div className={`${bool_isChatExpanded ? 'inset-1/2' : 'left-2/3 top-1/2'} h-20 w-20 fixed`}>
+          <img src={carga} className={`w-full h-full object-cover animacion-giro ${bool_isWaiting ? '' : 'hidden'}`} />
+        </div>
+        
+        <MessageSender />
+
+      </div>
+
+      
       
 
     </div>
@@ -41,3 +49,11 @@ const Chatbox = () => {
 }
 
 export default Chatbox
+
+const ToggleButton = styled.button`
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 15px 15px 0px;
+`;

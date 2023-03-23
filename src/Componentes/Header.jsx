@@ -25,15 +25,21 @@ const Header = () => {
 
     return (
     <Fragment>
-        <div className='w-full h-1/6 min-h-100 bg-white flex flex-row border-b border-gray-300 items-center'>
-            <div className='w-1/2 h-full flex flex-col'>
-                <span className='text-3xl mt-auto mx-10 font-bold negro-palabras'>Messages</span>
-                <div className='h-1/6'></div>
+        <div className='w-100 bg-white d-flex flex-row justify-content-between border-b border-gray-300 align-items-center p-4'>
+            <div className='h-100 d-flex align-items-center flex-column'>
+                <span className='text-3xl mt-auto mx-10 font-light'>Messages</span>
                 <span className='mb-auto text-xl mb-auto mx-10 font-light gris-palabras'>1.520 messages</span>
             </div>
 
-            <div className='w-1/2 h-full flex flex-row justify-end items-center pr-[3em]'>
-                <div className='hidden my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
+            <div className='h-100 d-flex align-items-center'>
+                <Dropdown />
+            </div>
+        </div>
+    </Fragment>
+  )
+}
+
+{/* <div className='hidden my-auto min-w-100 overflow-hidden flex h-1/4 border border-gray-300 min-h-50 mx-20 rounded-full w-1/5'>
                     <div className='w-1/2 h-full m-auto flex flex'>
                         <div className='m-auto'>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,14 +57,5 @@ const Header = () => {
                     </button>
 
                     
-                </div>
-                <Dropdown />
-            </div>
-
-
-        </div>
-    </Fragment>
-  )
-}
-
+                </div> */}
 export default Header

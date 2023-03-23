@@ -4,7 +4,7 @@ import { Modal } from './Modal';
 import { Error, Success } from '../Componentes/ErrorsAndSuccess';
 import avatar from '../assets/avatar.png'; // Corregir la importación aquí
 import styled from 'styled-components';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const openFile = () => {

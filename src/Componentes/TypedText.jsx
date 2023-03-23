@@ -49,7 +49,7 @@ const TypingText = ({ text }) => {
   }, [text]);
 
   return (
-    <div className='max-w-[85%] w-[600px] break-words chat-letter' style={{whiteSpace: 'pre-wrap'}}>
+    <div className='w-100 break-words chat-letter' style={{whiteSpace: 'pre-wrap'}}>
       {displayText}
     </div>
   );
