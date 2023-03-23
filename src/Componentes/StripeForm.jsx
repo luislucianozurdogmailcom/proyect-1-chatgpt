@@ -29,7 +29,7 @@ const StripeForm = () => {
                         Subscription
                     </h1>
                     <h1 className="text-[4em] font-bold text-gray-800 m-0">
-                        $150
+                        $50
                     </h1>
                     <p className="text-gray-600">
                         Per month

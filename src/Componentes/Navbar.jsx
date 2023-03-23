@@ -77,30 +77,28 @@ const Navbar = () => {
         </div>
       </div>
 
-      <a href='#' name='profile' onClick={(e) => setSelect(e)} className='transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
+      <button name='profile' onClick={(e) => setSelect(e)} className='w-full transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
         <i className='fa fa-user-circle text-3xl'></i>
-      </a>
+      </button>
 
-      <a href='#' name='chat' onClick={(e) => setSelect(e)} className='transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
+      <button name='chat' onClick={(e) => setSelect(e)} className='w-full transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
         <i className='fa fa-comments text-3xl'></i>
-      </a>
+      </button>
 
-      <a href='#' name='files' onClick={(e) => setSelect(e)} className='transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
+      <button name='files' onClick={(e) => setSelect(e)} className='w-full transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
         <i className='fa fa-file-text text-3xl'></i>
-      </a>
+      </button>
 
-      <a href='#' name='stripe' onClick={(e) => setSelect(e)} className='transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
+      <button name='stripe' onClick={(e) => setSelect(e)} className='w-full transition h-1/4 flex contenedor-central text-gray-300 hover:bg-gray-50 hover:text-blue-500'>
         <i className='fa fa-credit-card text-3xl'></i>
-      </a>
-
-      
+      </button>
 
     </div>
 
 
-    <div className='flex justify-center items-end p-0 pb-8'>
+    <div className='h-1/4 flex justify-center items-end pb-[45%]'>
 
-      <div className='h-1/4 contenedor-central'>
+      <div className='contenedor-central'>
         <button onClick={() => logOut()}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 2H9C8.46957 2 7.96086 2.21071 7.58579 2.58579C7.21071 2.96086 7 3.46957 7 4V6H9V4H18V20H9V18H7V20C7 20.5304 7.21071 21.0391 7.58579 21.4142C7.96086 21.7893 8.46957 22 9 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V4C20 3.46957 19.7893 2.96086 19.4142 2.58579C19.0391 2.21071 18.5304 2 18 2Z" fill="#BEBEBE"/>
