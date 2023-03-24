@@ -58,8 +58,8 @@ const Profileview = () => {
         <Fragment>
             <div className='flex flex-row w-full h-full'>
                 <Navbar></Navbar>
-                <div className='h-full w-10p bg-black'></div>
-                <div className='profile-container container py-12 px-[5em]'>
+                {/* <div className='h-full w-10p bg-black'></div> */}
+                <div className='profile-container container p-12'>
                     <form className='p-8' onSubmit={handleSubmit}>
                         
                         <div className='w-full flex justify-center items-center'>
@@ -187,28 +187,23 @@ const Profileview = () => {
 
                             </div>
 
-                            <br />
-
-                            <div className='hidden'>
-                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                    Profile Avatar
-                                </LabelProfile>
-                                <input
-                                    type="file"
-                                    name="profile_avatar"
-                                    id="profile_avatar"
-                                    accept="image/*"
-                                    onChange={handleChange}
-                                    className='border rounded w-full px-3 py-2'
-                                />
-                            </div>
-
-                            <div className='text-center'>
-                                <button type='submit' className='bg-blue-500 text-white px-6 py-4 mt-4 rounded'>
-                                    Guardar cambios <i className='fa fa-check'></i>
-                                </button>
-                            </div>
-
+                            <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                        Profile Avatar
+                                    </LabelProfile>
+                                    <input
+                                        type="file"
+                                        name="profile_avatar"
+                                        id="profile_avatar"
+                                        accept="image/*"
+                                        onChange={handleChange}
+                                        className='border rounded w-full px-3 py-2'
+                                    />
+                            <button
+                                type='submit'
+                                className='bg-blue-500 text-white px-4 py-2 mt-4 rounded'
+                            >
+                                Guardar cambios
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -183,7 +183,7 @@ const LoginForm = () => {
             </div>
 
             <div className='text-lg w-full text-gray-400 flex flex-row justify-center mt-2'>
-                do you want to register?&nbsp;  
+                    Need to Register?&nbsp;  
                 <Link to='/type' className='text-blue-500'><button>Sign Up</button></Link>
             </div>
         </div>

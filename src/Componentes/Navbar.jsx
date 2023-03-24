@@ -68,7 +68,7 @@ const Navbar = () => {
   },[])
 
   return (
-  <nav className="py-2 bg-white h-screen fixed left-0 top-0 flex flex-col space-between w-10p border-r border-gray-300" style={{ justifyContent:"space-between" }}>
+  <nav className="py-2 bg-white h-screen left-0 top-0 flex flex-col p-1 space-between border-r border-gray-300" style={{ justifyContent:"space-between" }}>
     <div id='navigation-container' className='h-1/2'>
 
       <div className='h-1/4 flex contenedor-central'>
