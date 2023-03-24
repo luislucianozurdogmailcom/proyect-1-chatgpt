@@ -4,13 +4,7 @@ import { Modal } from './Modal';
 import { Error, Success } from '../Componentes/ErrorsAndSuccess';
 import avatar from '../assets/avatar.png'; // Corregir la importación aquí
 import styled from 'styled-components';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-const openFile = () => {
-    let file = document.getElementById('profile_avatar');
-        file.click()
-}
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Profileview = () => {
@@ -62,28 +56,20 @@ const Profileview = () => {
             <div className='flex flex-row w-full h-full'>
                 <Navbar></Navbar>
                 {/* <div className='h-full w-10p bg-black'></div> */}
-                <div className='profile-container container py-12 px-[5em]'>
+                <div className='profile-container container p-12'>
                     <form className='p-8' onSubmit={handleSubmit}>
-                        
-                        <div className='profile-header rounded-full ring-[.6em] ring-gray-100 w-32 h-32 overflow-hidden p-0 my-0 mx-auto '>
-                            <img onClick={() => openFile()}
+                        <div className='profile-header'>
+                            <img
                                 src={user.profile_avatar}
                                 alt={`${user.username}'s avatar`}
-                                className='w-full'
+                                className='avatar w-32 h-32 rounded-full mx-auto'
                             />
                         </div>
-
-                        <br />
-                        <div className='text-center'>
-                            <h1 className='font-bold text-4xl'>{formData.fullname}</h1>
-                            <span className='text-xs text-gray-400'>{formData.email}</span>
-                        </div>
-                        <br />
                         
                         <div className='profile-info mt-4'>
 
-                            <div className='row columns-3 flex items-center space-between'>
-                                <div className='w-[50%]'>
+                            <div className='row'>
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='name'>
                                         Username
                                     </LabelProfile>
@@ -97,7 +83,7 @@ const Profileview = () => {
                                     />
 
                                 </div>
-                                <div className='w-[50%] mx-[1em]'>
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Password
                                     </LabelProfile>
@@ -111,7 +97,8 @@ const Profileview = () => {
                                     />
 
                                 </div>
-                                <div className='w-[50%]'>
+
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Fullname
                                     </LabelProfile>
@@ -127,40 +114,43 @@ const Profileview = () => {
                                 </div>
                             </div>
 
-                            <div className='row columns-3 flex items-center space-between'>
-                                <div className='w-[50%]'>
-                                    <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                        Status
-                                    </LabelProfile>
-                                    <p className='border rounded w-full px-3 py-2'>
-                                        {user.status}
-                                    </p>
+                            <div className='row'>
+                                <div className='col-12 col-md-4'>
+                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                Status
+                            </LabelProfile>
+                            <p className='border rounded w-full px-3 py-2'>
+                                {user.status}
+                            </p>
+
                                 </div>
-                                <div className='w-[50%] mx-[1em]'>
-                                    <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                        Date Create
-                                    </LabelProfile>
-                                    <p className='border rounded w-full px-3 py-2'>
-                                        {user.date_create}
-                                    </p>
+                                <div className='col-12 col-md-4'>
+                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                Date Create
+                            </LabelProfile>
+                            <p className='border rounded w-full px-3 py-2'>
+                                {user.date_create}
+                            </p>
+
                                 </div>
-                                <div className='w-[50%]'>
-                                    <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                        Email
-                                    </LabelProfile>
-                                    <input
-                                        type='email'
-                                        id='email'
-                                        name='email'
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className='border rounded w-full px-3 py-2'
-                                    />
+                                <div className='col-12 col-md-4'>
+                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                Email
+                            </LabelProfile>
+                            <input
+                                type='email'
+                                id='email'
+                                name='email'
+                                value={formData.email}
+                                onChange={handleChange}
+                                className='border rounded w-full px-3 py-2'
+                            />
+
                                 </div>
                             </div>
 
-                            <div className='row columns-3 flex items-center space-between'>
-                                <div className='w-[50%]'>
+                            <div className='row'>
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Category
                                     </LabelProfile>
@@ -169,7 +159,7 @@ const Profileview = () => {
                                     </p>
                                 </div>
 
-                                <div className='w-[50%] mx-[1em]'>
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Days Caduced
                                     </LabelProfile>
@@ -178,7 +168,7 @@ const Profileview = () => {
                                     </p>
 
                                 </div>
-                                <div className='w-[50%]'>
+                                <div className='col-12 col-md-4'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Payment Date
                                     </LabelProfile>
@@ -191,28 +181,23 @@ const Profileview = () => {
 
                             </div>
 
-                            <br />
-
-                            <div className='hidden'>
-                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                    Profile Avatar
-                                </LabelProfile>
-                                <input
-                                    type="file"
-                                    name="profile_avatar"
-                                    id="profile_avatar"
-                                    accept="image/*"
-                                    onChange={handleChange}
-                                    className='border rounded w-full px-3 py-2'
-                                />
-                            </div>
-
-                            <div className='text-center'>
-                                <button type='submit' className='bg-blue-500 text-white px-6 py-4 mt-4 rounded'>
-                                    Guardar cambios <i className='fa fa-check'></i>
-                                </button>
-                            </div>
-
+                            <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                        Profile Avatar
+                                    </LabelProfile>
+                                    <input
+                                        type="file"
+                                        name="profile_avatar"
+                                        id="profile_avatar"
+                                        accept="image/*"
+                                        onChange={handleChange}
+                                        className='border rounded w-full px-3 py-2'
+                                    />
+                            <button
+                                type='submit'
+                                className='bg-blue-500 text-white px-4 py-2 mt-4 rounded'
+                            >
+                                Guardar cambios
+                            </button>
                         </div>
                     </form>
                 </div>

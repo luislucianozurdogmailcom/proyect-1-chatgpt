@@ -50,7 +50,11 @@ const TypingText = ({ text }) => {
 
   return (
     <div className='w-100 break-words chat-letter' style={{whiteSpace: 'pre-wrap'}}>
+      <p>
+
       {displayText}
+
+      </p>
     </div>
   );
 };

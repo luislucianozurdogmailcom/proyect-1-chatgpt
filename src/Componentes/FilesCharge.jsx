@@ -16,7 +16,7 @@ const FilesCharge = () => {
 
 
   return (
-    <div className={`${bool_isChatExpanded ? 'w-90p' : 'w-66p'} h-screen items-center overflow-hidden relative d-flex justify-content-start align-items-center m-0`}>
+    <div className={`w-100 h-screen items-center overflow-hidden relative d-flex justify-content-start align-items-center m-0`}>
       <div className='position: relative'>
         <ToggleButton className='w-4 h-14 btn btn-primary position-absolute top-50 translate-middle-y start-0 chat-user text-white'  onClick={()=> dispatch(change()) }>
           <i className={`fa-solid fa-chevron-${bool_isChatExpanded ? 'right' : 'left'}`}></i>
