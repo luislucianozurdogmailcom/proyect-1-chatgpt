@@ -11,6 +11,19 @@ import { Error,Success,TextCopied } from './ErrorsAndSuccess';
 import styled from 'styled-components';
 
 
+const assignIntoStorage = (count) => {
+    let cnt = count;
+
+    if(localStorage.messages_send != undefined)
+    {
+        cnt = parseInt(localStorage.messages_send);
+    }
+
+    Object.assign(localStorage,{
+        messages_send: cnt + 1
+    });
+}
+
 const MessageSender = () => {
   
     // Ponemos la lógica del texto
@@ -332,7 +345,7 @@ const MessageSender = () => {
                     });
 
                     dispatch(changeCount(3));
-                }else if(int_countAnswer ==3){
+                }else if(int_countAnswer == 3){
                     response = await fetch(url_4, {
                         method      : 'POST',
                         mode        : 'cors',
@@ -470,7 +483,8 @@ const MessageSender = () => {
         
         // Apagamos la animación del spiner
         dispatch(change_wait());
-        
+      
+        assignIntoStorage(int_countAnswer);
     };
 
     return (

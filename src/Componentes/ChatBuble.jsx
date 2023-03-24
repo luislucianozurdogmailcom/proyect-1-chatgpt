@@ -35,13 +35,13 @@ const ChatBuble = (item) => {
               
               {item.bool_isUser ? (
               
-              <div className="w-14 h-14 rounded-xl border p-[.5em] m-3 mt-0 mb-0">
-                <img src={avatar} className="img-fluid" />
+              <div className="w-14 h-14 rounded-xl border p-[.4em] m-3 mt-0 mb-0 bg-white shadow-sm flex items-center">
+                <img src={avatar} className="img-fluid rounded" />
               </div> 
               
               ) : (
                 
-              <div className="w-14 h-14 rounded-xl border bg-blue-500 p-[.5em] m-3 mt-0 mb-0">
+              <div className="w-14 h-14 rounded-xl border bg-blue-500 p-[.5em] m-3 mt-0 mb-0 flex items-center">
                 <img src={callidus} className="img-fluid" />
               </div> 
                   
