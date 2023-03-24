@@ -74,11 +74,10 @@ const Profileview = () => {
                             <h1 className='font-bold text-4xl'>{formData.fullname || ''}</h1>
                             <span className='text-xs text-gray-400'>{formData.email || ''}</span>
                         </div>
-                        <br />
                         
                         <div className='profile-info mt-4'>
 
-                            <div className='row columns-3 flex items-center space-between xs-col'>
+                            <div className='columns-3 flex items-center space-between xs-col'>
                                 <div className='w-[50%] md:w-full sm:w-full xs-w-full'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='name'>
                                         Username
@@ -123,7 +122,7 @@ const Profileview = () => {
                                 </div>
                             </div>
 
-                            <div className='row columns-3 flex items-center space-between xs-col'>
+                            <div className='columns-3 flex items-center space-between xs-col'>
                                 <div className='w-[50%] md:w-full sm:w-full xs-w-full'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Status
@@ -155,7 +154,7 @@ const Profileview = () => {
                                 </div>
                             </div>
 
-                            <div className='row columns-3 flex items-center space-between xs-col'>
+                            <div className='columns-3 flex items-center space-between xs-col'>
                                 <div className='w-[50%] md:w-full sm:w-full xs-w-full'>
                                     <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
                                         Category
@@ -187,23 +186,30 @@ const Profileview = () => {
 
                             </div>
 
-                            <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
-                                        Profile Avatar
-                                    </LabelProfile>
-                                    <input
-                                        type="file"
-                                        name="profile_avatar"
-                                        id="profile_avatar"
-                                        accept="image/*"
-                                        onChange={handleChange}
-                                        className='border rounded w-full px-3 py-2'
-                                    />
-                            <button
-                                type='submit'
-                                className='bg-blue-500 text-white px-4 py-2 mt-4 rounded'
-                            >
-                                Guardar cambios
-                            </button>
+                            <div className='hidden'>
+                                <LabelProfile className='block text-sm mt-4 mb-1' htmlFor='email'>
+                                    Profile Avatar
+                                </LabelProfile>
+                                <input
+                                    type="file"
+                                    name="profile_avatar"
+                                    id="profile_avatar"
+                                    accept="image/*"
+                                    onChange={handleChange}
+                                    className='border rounded w-full px-3 py-2'
+                                />
+                            </div>
+
+                            <br />
+                            
+                            <div className='w-full text-center'>
+                                <button
+                                    type='submit'
+                                    className='transition bg-blue-500 hover:bg-blue-600 text-white px-5 py-3 mt-4 rounded'
+                                >
+                                    Guardar cambios <i className='fa fa-check'></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
