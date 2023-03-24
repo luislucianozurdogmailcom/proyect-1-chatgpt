@@ -11,7 +11,9 @@ const Http = {
         logout: '/logout',
         document: '/document',
         caduced: '/get-days-remaining',
-        validatePayments: '/validate-payments'
+        validatePayments: '/validate-payments',
+        profile: '/profile',
+        trackRegister: '/get-track-register'
     },
     get: function(url,bool=false,cb) {
         let headers = {}

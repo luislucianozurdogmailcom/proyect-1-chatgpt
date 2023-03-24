@@ -83,3 +83,14 @@
         transform: scale(1.5);
     }
 }
+
+@media only screen and (max-width: 640px) {
+    
+    .xs-col {
+        flex-direction: column !important;
+    }
+    .xs-w-full {
+        width: 100%;
+    }
+    
+}
