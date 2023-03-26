@@ -1,7 +1,7 @@
 import { parse } from "@fortawesome/fontawesome-svg-core";
 import { formToJSON } from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../css/main.css'
 import Http from "../Services/Services";
 
@@ -17,11 +17,12 @@ const getTrackRegister = () => {
 
 const PaymentCountDownForm = () => {
 
+    const navigate = useNavigate()
     const [trackData,setTrackData] = useState(_trackData);
 
     useEffect(() => {
         _setTrack = setTrackData;
-        getTrackRegister()
+        getTrackRegister();
     },[]);
 
     return(
@@ -43,9 +44,9 @@ const PaymentCountDownForm = () => {
                         Valid day
                     </p>
                     <br />
-                    <Link to="/chat" className="text-white bg-blue-500 hover:bg-blue-600 transition p-3 rounded font-bold mb-[1em]">
+                    <button onClick={() => navigate('/chat')} className="text-white bg-blue-500 hover:bg-blue-600 transition p-3 rounded font-bold mb-[1em]">
                         <i className="fa fa-arrow-left"></i> Go to chat
-                    </Link>
+                    </button>
                     <div className="columns-2 flex items-center gap-4 border-2 border-gray-200 p-2 rounded-lg">
                         <div className="p-4 w-1/2 rounded-lg border-4 border-green-200 text-gray-300 bg-green-50">
                             <i className="fa fa-check text-4xl text-green-400"></i>
@@ -90,7 +91,7 @@ const PaymentCountDownForm = () => {
                                 <tr>
                                     <td><span className="text-gray-400">Message spend</span></td>
                                     <td></td>
-                                    <td><b>0</b> <i className="fa fa-commenting text-gray-400"></i></td>
+                                    <td><b>{trackData.message_spend}</b> <i className="fa fa-commenting text-gray-400"></i></td>
                                 </tr>
                                 <tr>
                                     <td><span className="text-gray-400">Top message send</span></td>
@@ -100,7 +101,7 @@ const PaymentCountDownForm = () => {
                                 <tr>
                                     <td><span className="text-gray-400">Cumulate</span></td>
                                     <td></td>
-                                    <td><b>$0.00</b></td>
+                                    <td><b>${trackData.cumulate}</b></td>
                                 </tr>
                                 <tr>
                                     <td><span className="text-gray-400">Top Message spend</span></td>

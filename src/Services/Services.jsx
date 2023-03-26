@@ -13,7 +13,8 @@ const Http = {
         caduced: '/get-days-remaining',
         validatePayments: '/validate-payments',
         profile: '/profile',
-        trackRegister: '/get-track-register'
+        trackRegister: '/get-track-register',
+        messages_send: '/messages-send'
     },
     get: function(url,bool=false,cb) {
         let headers = {}

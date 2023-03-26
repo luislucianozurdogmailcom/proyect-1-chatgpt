@@ -6,6 +6,7 @@ import '../css/main.css'
 import { Modal,show,doIt,close,set } from '../Pages/Modal'
 import Http from '../Services/Services'
 import { Error,Success } from './ErrorsAndSuccess'
+import { deleteCookie } from '../Services/Storage'
 
 let _nav = null;
 
@@ -40,6 +41,8 @@ const _close = () => {
       });
 
       localStorage.clear();
+
+      deleteCookie("ms");
 
       setTimeout(() => {
         window.location.href = '/';

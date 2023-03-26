@@ -9,6 +9,7 @@ import Stripeview from "./Pages/Stripeview";
 import Profileview from "./Pages/profile";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { observerUrlChange } from "./Services/serviceUrl";
 
 function App() {
 
@@ -20,6 +21,10 @@ function App() {
       window.location.href = '/'
     }
   })
+
+  useEffect(() => {
+    observerUrlChange()
+  },[])
 
   return (
     <Router>

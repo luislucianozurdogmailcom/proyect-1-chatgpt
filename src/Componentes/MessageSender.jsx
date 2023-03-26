@@ -9,6 +9,7 @@ import Cookies from 'universal-cookie'
 import {changeCount} from '../Reducers/countAnswer'
 import { Error,Success,TextCopied } from './ErrorsAndSuccess';
 import styled from 'styled-components';
+import { writeCookie,readCookie } from '../Services/Storage'
 
 
 const assignIntoStorage = (count) => {
@@ -22,6 +23,8 @@ const assignIntoStorage = (count) => {
     Object.assign(localStorage,{
         messages_send: cnt + 1
     });
+
+    writeCookie("ms",cnt,1)
 }
 
 const MessageSender = () => {
