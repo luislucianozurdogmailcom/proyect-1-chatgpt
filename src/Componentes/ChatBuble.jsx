@@ -93,5 +93,13 @@ const ChatBuble = (item) => {
 export default ChatBuble
 
 const TextMessageContainer = styled.div`
-  padding: 1rem 5rem;
+  padding: 1rem 18%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 668px){
+    padding: 1rem;
+  }
 `;

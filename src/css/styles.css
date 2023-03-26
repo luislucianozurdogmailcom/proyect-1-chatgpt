@@ -141,3 +141,12 @@
     overflow: scroll;
     overflow-x: hidden;
 }
+
+@media (max-width: 768px) {
+    .SidebarContainer {
+      display: none;
+    }
+    .MenuButton {
+      display: block;
+    }
+  }

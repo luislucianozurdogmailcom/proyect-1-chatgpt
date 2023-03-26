@@ -97,6 +97,9 @@ const SidebarContainer = styled.div`
   overflow: hidden;
   width: ${props => props.isExpanded ? '0vw' : '40vw'} !important;
   transition: width 0.5s ease-in-out;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SwiperContainer =  styled.div`
