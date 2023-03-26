@@ -7,7 +7,25 @@ import {change_wait} from '../Reducers/waitingResponse'
 import {changeCookie} from '../Reducers/cookie'
 import Cookies from 'universal-cookie'
 import {changeCount} from '../Reducers/countAnswer'
+import { Error,Success,TextCopied } from './ErrorsAndSuccess';
+import styled from 'styled-components';
+import { writeCookie,readCookie } from '../Services/Storage'
 
+
+const assignIntoStorage = (count) => {
+    let cnt = count;
+
+    if(localStorage.messages_send != undefined)
+    {
+        cnt = parseInt(localStorage.messages_send);
+    }
+
+    Object.assign(localStorage,{
+        messages_send: cnt + 1
+    });
+
+    writeCookie("ms",cnt,1)
+}
 
 const MessageSender = () => {
   
@@ -20,13 +38,15 @@ const MessageSender = () => {
     const session_cookie                 = useSelector((state) => state.cookie.cookie);
 
 
+
+
     // Elección del modelo
     const str_model                      = useSelector((state) => state.modelSelected.str_model);
     
     const dispatch          = useDispatch();// funcion para despachar la accion de actualizar el estado de redux
     
 
-    const handleSubmit      = async (event) =>{
+    const handleSubmit      = async (event) => {
         event.preventDefault(); //evitamos que la página recargue
 
         // Activamos el spin animation
@@ -36,7 +56,7 @@ const MessageSender = () => {
         dispatch(addText({str_message: texto, bool_isUser: true})); 
         
         // Petición para legal question
-        if (texto && str_model == 'shortLegal') {
+        if (texto && (str_model == 'shortLegal' || str_model == 'legal_question')) {
             
             let url_legal_api = int_countAnswer == 1 ? 'https://callidus.eastasia.cloudapp.azure.com/question/question_answer' : 'https://callidus.eastasia.cloudapp.azure.com/question/question_intake';
            
@@ -328,7 +348,7 @@ const MessageSender = () => {
                     });
 
                     dispatch(changeCount(3));
-                }else if(int_countAnswer ==3){
+                }else if(int_countAnswer == 3){
                     response = await fetch(url_4, {
                         method      : 'POST',
                         mode        : 'cors',
@@ -445,30 +465,59 @@ const MessageSender = () => {
                 setTexto(''); 
             }
         }
+
+
+        if(texto && str_model == 'factPattern')
+        {
+            console.log(str_model,'<------');
+        }
+
+        if(texto && str_model == 'Proofread')
+        {
+            console.log(str_model,'<------');
+        }
+
+        if(texto && str_model == 'draft')
+        {
+            console.log(str_model,'<------');
+        }
+
+
         
         // Apagamos la animación del spiner
         dispatch(change_wait());
-        
+      
+        assignIntoStorage(int_countAnswer);
     };
 
     return (
     <Fragment>
-        <form onSubmit={handleSubmit} className='flex h-1/6 flex-col items-center justify-center'>
-            <div className='w-3/4 min-h-50 rounded-full h-1/3 my-auto bg-white flex flex-row justify-between items-center pl-6 pr-2'>
+        <FormSenderTag onSubmit={handleSubmit} className='h-1/6 d-flex flex-column align-items-center justify-content-center'>
+            <div className='rounded-full my-auto bg-white d-flex flex-row justify-content-between align-items-center p-1 w-100'>
                 
-                <input name='message' value={texto} onChange={(event) => setTexto(event.target.value)} className='w-full h-full outline-none focus:outline-none' placeholder='Send a message'></input>
+                <FormSenderInput name='message' value={texto} onChange={(event) => setTexto(event.target.value)} className='w-100 rounded-full h-100 outline-none focus:outline-none' placeholder='Send a message'></FormSenderInput>
                 
-                <button type='submit' className='chat-user rounded-full h-10 w-10 flex items-center justify-center'>
+                <button type='submit' className='chat-user rounded-full rounded-circle img-fluid flex items-center justify-center p-3 m-1'>
                     <svg width="23" height="23" viewBox="0 0 21 21" fill="none" >
                         <path d="M20.3803 0.619692C20.2664 0.506353 20.1225 0.427882 19.9656 0.393504C19.8087 0.359127 19.6452 0.370272 19.4943 0.425629L0.931845 7.17563C0.771759 7.23635 0.633934 7.34434 0.536676 7.48525C0.439418 7.62616 0.387329 7.79332 0.387329 7.96453C0.387329 8.13575 0.439418 8.30291 0.536676 8.44382C0.633934 8.58473 0.771759 8.69272 0.931845 8.75344L8.17966 11.6475L13.529 6.28125L14.7187 7.47094L9.34403 12.8456L12.2465 20.0934C12.3091 20.2504 12.4173 20.385 12.5572 20.4798C12.6971 20.5746 12.8622 20.6252 13.0312 20.625C13.2017 20.6215 13.3672 20.5664 13.5058 20.467C13.6443 20.3676 13.7495 20.2285 13.8075 20.0681L20.5575 1.50563C20.615 1.35635 20.6288 1.1938 20.5975 1.03695C20.5661 0.880087 20.4908 0.735378 20.3803 0.619692Z" fill="white"/>
                     </svg>
                 </button>
 
             </div>
-        </form>
+        </FormSenderTag>
+        <TextCopied>Text copied!</TextCopied>
     </Fragment>
 
   )
 }
 
 export default MessageSender
+
+const FormSenderTag = styled.form`
+    width: 90%;
+`;
+
+const FormSenderInput = styled.input`
+    padding: 0.8rem 1rem;
+    background: transparent;
+`;

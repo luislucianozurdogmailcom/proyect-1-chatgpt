@@ -129,14 +129,14 @@ const SignupCompanyForm = () => {
     }
 
     return (
-        <div id='main-container' className='flex justify-center items-center w-[50%] flex-col py-[2em]'>      
+        <div id='main-container' className='flex justify-center items-center w-[50%] flex-col scroll-smooth px-[5em]'>      
             <br />
             <br />
             <br />
             <br />
             <span className='text-3xl font-bold'>Business Sign Up</span>
             <br />
-            <div className='container px-[20%]'>
+            <div className='container'>
                 <div className='w-full mb-[1em]'>
                     <label className="block text-gray-700 text-xl font-extralight mb-2" htmlFor="username">
                         E-mail
@@ -220,12 +220,14 @@ const SignupCompanyForm = () => {
                 })} className='w-full rounded-lg h-12 bg-blue-500 text-white font-bold text-lg'>
                     Continue
                 </button>
+                <br />
+                <br />
+                <Link to="/type" className="w-full rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
+                    Cancel
+                </Link>
             </div>
             <br />
-            <Link to="/type" className="w-[60%] rounded-lg h-12 border-[3px] text-gray-500 font-bold text-lg flex justify-center items-center">
-                Cancel
-            </Link>
-
+            <br />
             <Error>Wrong save the customer</Error>
             <Success>Save customer done!</Success>
             <div id='up-pass' className='fixed text-white left-0 w-full p-[1.6%] bg-red-500 shadow-lg text-center'>

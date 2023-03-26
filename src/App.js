@@ -6,15 +6,25 @@ import SignupCompany from './Pages/SignupCompany';
 import SignupType from './Pages/SignupType';
 import Fileview from './Pages/fileview';
 import Stripeview from "./Pages/Stripeview";
+import Profileview from "./Pages/profile";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { observerUrlChange } from "./Services/serviceUrl";
 
 function App() {
 
   let home = localStorage.token != undefined ? <Chatview /> : <Login /> ;
 
   window.addEventListener('storage', () => {
-    window.location.href = '/'
+    if(localStorage.token == undefined)
+    {
+      window.location.href = '/'
+    }
   })
+
+  useEffect(() => {
+    observerUrlChange()
+  },[])
 
   return (
     <Router>
@@ -34,6 +44,9 @@ function App() {
         
         {/* Pagina Chat */}
         <Route path="/chat" element={<Chatview />} />
+
+        {/* Pagina Profile */}
+        <Route path="/profile" element={<Profileview />} />
 
         {/* Pagina archivos */}
         <Route path='files' element={<Fileview />} />

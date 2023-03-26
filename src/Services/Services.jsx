@@ -1,15 +1,20 @@
 
 
 const Http = {
-    host: 'https://calliduschat.herokuapp.com', 
-    //host: 'http://localhost:8000',
+    //host: 'https://calliduschat.herokuapp.com', 
+    host: 'http://localhost:8000',
     routes: {
         login: '/login',
+        google: '/google-login',
         signup: '/signup',
         business: '/signup-company',
         logout: '/logout',
         document: '/document',
-        caduced: '/get-days-remaining'
+        caduced: '/get-days-remaining',
+        validatePayments: '/validate-payments',
+        profile: '/profile',
+        trackRegister: '/get-track-register',
+        messages_send: '/messages-send'
     },
     get: function(url,bool=false,cb) {
         let headers = {}

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Http from "../Services/Services";
-
+import styled from "styled-components";
 
 const StripeForm = () => {
     const stripeURL = "https://buy.stripe.com/test_bIYcOs8iDc9o0GA3cc";
@@ -23,13 +23,13 @@ const StripeForm = () => {
             </h1>
             <br />
             <br />
-            <div className="p-[2em] w-full rounded-lg bg-white shadow-lg flex items-start">
-                <div className="w-[40%] flex flex-col text-center p-3">
+            <div className="w-100 p-3 rounded-lg bg-white shadow-lg d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <div className="w-100 flex flex-col text-center p-3">
                     <h1 className="text-gray-800 font-bold text-lg">
                         Subscription
                     </h1>
                     <h1 className="text-[4em] font-bold text-gray-800 m-0">
-                        $150
+                        $50
                     </h1>
                     <p className="text-gray-600">
                         Per month
@@ -39,7 +39,7 @@ const StripeForm = () => {
                         Gets Started
                     </a>
                 </div>
-                <div className="w-[60%] flex flex-col items-start p-3 ml-[1em] text-gray-600">
+                <div className="w-100 flex flex-col items-start p-3 ml-[1em] text-gray-600">
                     <p>Access all this features</p>
                     <br />
                     {list.map((el,i) => (
@@ -51,7 +51,7 @@ const StripeForm = () => {
             </div>
             <br />
             <br />
-            <div className="p-2 w-full flex justify-between items-center">
+            <div className="p-2 w-full flex d-flex flex-column flex-md-row justify-content-center align-items-center d-none d-md-flex">
                 {subList.map((el,i) => (
                     <div key={'item-' + i} className={"p-1 flex flex-row w-[30%] text-gray-600"}>
                         <i className={el.icon}></i> {el.text}
@@ -60,7 +60,7 @@ const StripeForm = () => {
             </div>
         </div>
     )
-}
+};
 
 
-export default StripeForm
+export default StripeForm;

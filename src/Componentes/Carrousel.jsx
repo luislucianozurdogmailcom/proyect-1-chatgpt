@@ -3,7 +3,7 @@ import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import folder from '../assets/folder.png'
 import folder_gris from '../assets/folder-gris.png'
-
+import styled from 'styled-components'
 class Carousel extends Component {
   
   constructor(props) {
@@ -42,56 +42,73 @@ class Carousel extends Component {
 
   render() {
     return (
-      <div className="max-w-800 mx-auto my-4 h-full">
+      <div className="w-100 h-100">
         <div className="swiper-container h-full">
-          <div className="swiper-wrapper flex flex-row h-full p-3">
+          <div className="swiper-wrapper d-flex flex-row h-full">
             
-            <div className="swiper-slide">
-                <img src={folder} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Private</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>120 pages</span>
+            {/* Swipe */}
+            <div className="swiper-slide m-2">
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <SwiperSlideImgContainer>
+                    <img src={folder} className='img-fluid'/>
+                  </SwiperSlideImgContainer>
+                  <div className='d-flex justify-content-start align-items-center flex-column'>
+                    <h6 className=''>Private</h6>
+                    <p className='text-xs gris-palabras'>120 pages</p>
+                  </div>
+                </div>
             </div>
 
-            <div className="swiper-slide">
-            <img src={folder_gris} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Litigations</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>500 pages</span>
+            {/* Swipe */}
+            <div className="swiper-slide m-2">
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <SwiperSlideImgContainer>
+                    <img src={folder} className='img-fluid'/>
+                  </SwiperSlideImgContainer>
+                  <div className='d-flex justify-content-start align-items-center flex-column'>
+                    <h6 className=''>Private</h6>
+                    <p className='text-xs gris-palabras'>120 pages</p>
+                  </div>
+                </div>
             </div>
 
-            <div className="swiper-slide">
-                <img src={folder_gris} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Cases</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>500 pages</span>
+            {/* Swipe */}
+            <div className="swiper-slide m-2">
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <SwiperSlideImgContainer>
+                    <img src={folder} className='img-fluid'/>
+                  </SwiperSlideImgContainer>
+                  <div className='d-flex justify-content-start align-items-center flex-column'>
+                    <h6 className=''>Private</h6>
+                    <p className='text-xs gris-palabras'>120 pages</p>
+                  </div>
+                </div>
             </div>
 
-            <div className="swiper-slide">
-                <img src={folder_gris} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Cases</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>500 pages</span>
+            {/* Swipe */}
+            <div className="swiper-slide m-2">
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <SwiperSlideImgContainer>
+                    <img src={folder} className='img-fluid'/>
+                  </SwiperSlideImgContainer>
+                  <div className='d-flex justify-content-start align-items-center flex-column'>
+                    <h6 className=''>Private</h6>
+                    <p className='text-xs gris-palabras'>120 pages</p>
+                  </div>
+                </div>
             </div>
 
-            <div className="swiper-slide">
-                <img src={folder_gris} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Cases</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>153 pages</span>
-            </div>
-
-            <div className="swiper-slide">
-                <img src={folder_gris} className='folder-size'></img>
-                <br></br>
-                <span className='text-left mx-2'>Cases</span>
-                <br></br>
-                <span className='text-xs gris-palabras mx-2'>147 pages</span>
+            {/* Swipe */}
+            <div className="swiper-slide m-2">
+                <div className='d-flex justify-content-center flex-column align-items-center'>
+                  <SwiperSlideImgContainer>
+                    <img src={folder} className='img-fluid'/>
+                  </SwiperSlideImgContainer>
+                  <div className='d-flex justify-content-start align-items-center flex-column'>
+                    <h6 className=''>Private</h6>
+                    <p className='text-xs gris-palabras'>120 pages</p>
+                  </div>
+                </div>
             </div>
 
           </div>
@@ -102,3 +119,9 @@ class Carousel extends Component {
 }
 
 export default Carousel;
+
+const SwiperSlideImgContainer = styled.div`
+  max-height: 60px;
+  margin: 1rem;
+  cursor: pointer;
+`;
