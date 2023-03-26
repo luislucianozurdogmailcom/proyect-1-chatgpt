@@ -40,4 +40,7 @@ const ToggleButton = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 0px 15px 15px 0px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
