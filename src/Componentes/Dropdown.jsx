@@ -14,7 +14,8 @@ const welcomeMessages = {
     Proofread: "Hi there! I'm Callidus. This is the Proofreading module. Here, you can upload a Word or PDF document, copy/paste (or write) text, or provide a link, and I will proofread what you wrote, paying attention to the areas you on which you want me to focus. Then, I will redline the document in Word format for you to review.",
     draft: "2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto veniam quia rem repellat modi maxime ratione, consequuntur earum quis quas inventore itaque impedit, suscipit ab laborum deserunt beatae cum tempora?",
     basicBot: "Hello, I am Callidus. You have entered the 'general bot' module. Here, I am very similar to ChatGPT, although I do have the power to search the web and have API integration into legal databases. I can answer legal questions but can also chat about anything with you. For example, you could ask me to write poetry that rhymes regarding a certain topic in the style of your favorite poet. And much more! Go ahead and get started.",
-    summarize: "Hello! I am Callidus. Welcome to the Summarize module. Here, you can upload a Word or PDF document, copy/paste (or write) text, or provide a link, and I will summarize the text for you. For now, please stay under about 5 pages."
+    summarize: "Hello! I am Callidus. Welcome to the Summarize module. Here, you can upload a Word or PDF document, copy/paste (or write) text, or provide a link, and I will summarize the text for you. For now, please stay under about 5 pages.",
+    basicBot: "3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sit eligendi vitae delectus rem voluptatibus officia consectetur voluptas iure commodi, magnam aliquid repellat quis minima? Velit voluptates natus nam molestias.",
 }
 
 const openDrop = () => {
@@ -71,12 +72,12 @@ const Dropdown = () => {
             <DropdownMenu id="dropdown" className='container'>
                 <DropdownList aria-labelledby="dropdownDefaultButton" className='mt-1'>
                     {[
+                        { name: 'basicBot', label: 'Basic bot' },
                         { name: 'shortLegal', label: 'Short Legal Hypo' },
                         { name: 'legalResearchModule', label: 'Legal Research Modul' },
                         { name: 'memoWriting', label: 'Memo Writing' },
                         { name: 'Proofread', label: 'Proofread' },
                         { name: 'factPattern', label: 'Fact Pattern' },
-                        { name: 'draft', label: 'Draft' },
                         { name: 'summarize', label: 'Search Summarize' },
                     ].map((item) => (
                         <DropdownItem key={item.name} name={item.name} onClick={(e) => handleClickModel(e.currentTarget)}>
