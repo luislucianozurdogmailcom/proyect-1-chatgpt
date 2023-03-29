@@ -43,7 +43,7 @@ const setBtnText = (elm) => {
 const setWelcome = (str) => {
     let slickTrack = document.querySelector('.gris-buscador .slick-track');
         slickTrack.innerHTML = '';
-        slickTrack.innerHTML = '<div class="slick-slide m-[2em] p-6 text-[14px] bg-white text-gray-500 rounded-lg shadow-lg text-justify">' 
+        slickTrack.innerHTML = '<div class="w-[80%] mx-auto slick-slide m-[2em] p-6 text-[14px] bg-white text-gray-500 rounded-lg shadow-lg text-justify">' 
             + welcomeMessages[str] + 
         '</div>';
 }
@@ -77,7 +77,6 @@ const Dropdown = () => {
                         { name: 'legalResearchModule', label: 'Legal Research Modul' },
                         { name: 'memoWriting', label: 'Memo Writing' },
                         { name: 'Proofread', label: 'Proofread' },
-                        { name: 'factPattern', label: 'Fact Pattern' },
                         { name: 'summarize', label: 'Search Summarize' },
                     ].map((item) => (
                         <DropdownItem key={item.name} name={item.name} onClick={(e) => handleClickModel(e.currentTarget)}>
