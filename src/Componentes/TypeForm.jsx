@@ -20,7 +20,7 @@ const TypeForm = () => {
     return (
         <div className='flex justify-center items-center w-[50%] flex-col'>      
             <p className='text-lg w-full text-gray-400 flex flex-row justify-center mt-2'>
-                what kind of registration do you want to do?
+                Tipo de registro
             </p>
             <br />
             <div className='w-full flex flex-row items-center relative'>

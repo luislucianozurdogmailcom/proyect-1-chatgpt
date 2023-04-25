@@ -12,6 +12,13 @@
 #up-success.active {
     bottom: 0em;
 }
+#text-copied {
+    transition: all .2s ease-in-out;
+    bottom: -10em;
+}
+#text-copied.active {
+    bottom: 0em;
+}
 #up-pass {
     transition: all .2s ease-in-out;
     bottom: -10em;
@@ -59,4 +66,31 @@
 #dropdown.active {
     visibility: visible;
     opacity: 1;
+}
+#count-down {
+    transition: all .2s ease-in-out;
+    animation-name: count-down;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+}
+@keyframes count-down {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    
+    .xs-col {
+        flex-direction: column !important;
+    }
+    .xs-w-full {
+        width: 100%;
+    }
+    
 }

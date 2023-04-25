@@ -132,3 +132,21 @@
 .h-1px{
     height: 1px;
 }
+
+.small-text {
+    font-size: 12px;
+}
+
+.slider-chat-overflow {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .SidebarContainer {
+      display: none;
+    }
+    .MenuButton {
+      display: block;
+    }
+  }

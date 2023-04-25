@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import {change} from '../Reducers/chatExpand'
 import FileUpload from './FileUpload';
 import FileList from './FileList';
+import styled from 'styled-components';
+
+
 
 const FilesCharge = () => {
 
@@ -13,18 +16,31 @@ const FilesCharge = () => {
 
 
   return (
-    <div className={`${bool_isChatExpanded ? 'w-90p' : 'w-66p'} h-screen items-center overflow-hidden relative`}>
-        
+    <div className={`w-100 h-screen items-center overflow-hidden relative d-flex justify-content-start align-items-center m-0`}>
+      <div className='position: relative'>
+        <ToggleButton className='w-4 h-14 btn btn-primary position-absolute top-50 translate-middle-y start-0 chat-user text-white'  onClick={()=> dispatch(change()) }>
+          <i className={`fa-solid fa-chevron-${bool_isChatExpanded ? 'right' : 'left'}`}></i>
+        </ToggleButton> 
+      </div>
+
+      <div className='w-100 h-100 d-flex justify-content-center align-items-center flex-column'>
         <FileUpload />
-
         <FileList />
-
-        <button className='w-4 h-14 text-center flex flex-col justify-center fixed top-1/2 chat-user text-white rounded-full rounded-tl rounded-bl'  onClick={()=> dispatch(change()) }>
-            <i className={`fa-solid fa-chevron-${bool_isChatExpanded ? 'right' : 'left'}`}></i>
-        </button>
-
+      </div>
+        
     </div>
   )
 }
 
 export default FilesCharge
+
+const ToggleButton = styled.button`
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 15px 15px 0px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
